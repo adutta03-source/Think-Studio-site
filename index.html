@@ -76,6 +76,18 @@ p{margin:0}
 .sectors li{border-top:1px solid var(--ink);padding-top:18px}
 .sectors h3{font-size:1.45rem;margin-bottom:8px}
 .sectors p{color:var(--muted);font-size:.95rem}
+.case{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:32px 56px;margin-top:48px;padding-top:32px;border-top:3px solid var(--ink)}
+.case-meta dl{margin:0 0 24px;display:grid;gap:16px}
+.case-meta dt{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.case-meta dd{margin:4px 0 0;font-size:.95rem}
+.case-meta .chips{margin-top:8px}
+.case-steps{list-style:none;margin:0;padding:0;display:grid;gap:22px}
+.case-steps h3{font-size:1.4rem;margin-bottom:6px}
+.case-steps p{color:var(--muted)}
+.case-out{grid-column:2;background:var(--block);color:var(--on-block);padding:26px 28px}
+.case-out h3{font-size:1.4rem;color:var(--on-block)}
+.case-out h3::after{content:"";display:block;width:40px;height:4px;background:var(--mark);margin-top:10px}
+.case-out ul{margin:14px 0 0;padding-left:1.1em;display:grid;gap:8px;color:#c9cec8}
 .steps{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s}
 .steps li{counter-increment:s;padding-top:18px;border-top:3px solid var(--ink)}
 .steps li::before{content:"0" counter(s);display:block;font-family:var(--display);font-weight:700;font-size:.9rem;color:var(--accent);margin-bottom:10px}
@@ -105,7 +117,8 @@ p{margin:0}
 @media (max-width:820px){
   .nav ul{display:none}
   .hero,.head,.why .wrap,.people{grid-template-columns:minmax(0,1fr)}
-  .practice,.sectors,.cats{grid-template-columns:minmax(0,1fr)}
+  .practice,.sectors,.cats,.case{grid-template-columns:minmax(0,1fr)}
+  .case-out{grid-column:auto}
     .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:440px){.steps{grid-template-columns:minmax(0,1fr)}}
@@ -119,6 +132,7 @@ p{margin:0}
       <ul>
         <li><a href="#practices">Practices</a></li>
         <li><a href="#clients">Who we work with</a></li>
+        <li><a href="#work">Work</a></li>
         <li><a href="#process">How we work</a></li>
         <li><a href="#people">People</a></li>
       </ul>
@@ -202,6 +216,39 @@ p{margin:0}
       <li><h3>Companies</h3><p>Product, space and interaction design, strategy, and capacity building for teams.</p></li>
       <li><h3>Education</h3><p>Workshops, retreats, mentoring and fellowships for schools, universities and their students.</p></li>
     </ul>
+  </section>
+
+  <section class="sec" id="work">
+    <div class="head">
+      <div><span class="note">Selected work</span></div>
+      <div>
+        <h2>Learning to read a city as a system.</h2>
+        <p>A field-based course and its evaluation, from the founders' teaching at Delhi Technological University.</p>
+      </div>
+    </div>
+    <article class="case">
+      <div class="case-meta">
+        <dl>
+          <dt>Setting</dt><dd>B.Des Interaction Design course, Delhi Technological University</dd>
+          <dt>Published</dt><dd><cite>Design for All</cite>, Vol 21 No 2, February 2026. Guest editors Partha Pratim Das and Dr Ravindra Singh</dd>
+          <dt>Practices</dt><dd><ul class="chips"><li>Interaction design</li><li>Systems thinking</li><li>Metacognition</li><li>Research and evaluation</li></ul></dd>
+        </dl>
+        <a class="btn" href="http://www.designforall.in">Design for All Institute of India</a>
+      </div>
+      <ol class="case-steps">
+        <li><h3>The brief</h3><p>Partha sent second-year design students into Purani Dilli's markets with one instruction: use every sense, talk to people, and work out how the place actually functions, from its commerce and movement to its language.</p></li>
+        <li><h3>The publication</h3><p>Students' essays, sketches, maps and sensory journey charts were published as a full issue of the journal <cite>Design for All</cite>, guest-edited by Partha.</p></li>
+        <li><h3>The evaluation</h3><p>Akanshya then assessed what the assignment changed, across three lenses: learning, perception and cognition. Each essay was placed on a five-step ladder: describe, analyse, critique, synthesise, and reflect on one's own thinking.</p></li>
+      </ol>
+      <div class="case-out">
+        <h3>What changed</h3>
+        <ul>
+          <li>Students re-read the market's apparent chaos as an informal system with its own rules.</li>
+          <li>Attention moved from sight alone to all five senses, and to what goes unnoticed because it is always there.</li>
+          <li>One pair turned a one-day visit into a five-month inquiry. Another described a new idea, "brain ergonomics": learning environments shaped to how the brain works.</li>
+        </ul>
+      </div>
+    </article>
   </section>
 
   <section class="sec" id="process">
