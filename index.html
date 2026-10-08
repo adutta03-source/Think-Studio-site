@@ -52,10 +52,20 @@ p{margin:0}
 .btn.solid{background:var(--ink);color:var(--paper)}
 .btn.solid:hover{background:transparent;color:var(--ink)}
 
-.hero{padding-block:clamp(40px,7vw,96px) clamp(56px,8vw,112px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,220px);gap:32px 56px;align-items:end}
-.hero h1{font-size:clamp(2.5rem,7vw,5.6rem);font-weight:500;margin-top:18px;letter-spacing:-.03em}
-.hero p{max-width:32em;margin-top:24px;font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--muted)}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero{display:block;padding-block:clamp(56px,10vw,136px) clamp(48px,7vw,88px)}
+.hero h1{font-size:clamp(2.9rem,8.6vw,6.6rem);font-weight:500;line-height:.98;letter-spacing:-.045em;margin-top:22px}
+.hero h1 .soft{color:var(--muted)}
+.hero p{max-width:30em;margin-top:28px;font-size:clamp(1.08rem,1.5vw,1.25rem);line-height:1.55;color:var(--muted)}
+.hero .cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:36px}
+.tlink{font-family:var(--display);font-weight:500;font-size:1rem;text-decoration:none;color:var(--ink);padding-bottom:3px;border-bottom:1.5px solid var(--mark)}
+.tlink span{display:inline-block;transition:transform .2s}
+.tlink:hover span{transform:translateX(4px)}
+.proof-k{max-width:none!important;margin-top:clamp(48px,7vw,88px)!important;padding-top:20px;border-top:1px solid var(--line);font-size:.74rem!important;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)!important}
+.proof{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 40px}
+.proof li{display:flex;flex-direction:column;gap:6px}
+.proof b{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem,3vw,2.4rem);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.proof span{font-size:.94rem;color:var(--muted);max-width:18em}
+.acc{font-style:normal;color:var(--mark)}
 .margin{border-left:2px solid var(--mark);padding-left:16px;font-size:.88rem;color:var(--muted);max-width:16em}
 .margin b{display:block;font-family:var(--display);font-weight:500;font-size:.95rem;color:var(--ink);margin-bottom:4px}
 .margin p+p{margin-top:14px}
@@ -224,11 +234,11 @@ p{margin:0}
   .tiles,.shifts ol,.abilities{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media (max-width:440px){.steps,.tiles,.shifts ol,.abilities{grid-template-columns:minmax(0,1fr)}.heat{min-width:0;border-spacing:2px}.heat tbody th small{display:none}.heat tbody th{width:18%;font-size:.78rem;white-space:nowrap}.heat thead th{font-size:.64rem}.heat td{height:36px;font-size:.92rem}.wt{min-width:0;font-size:.76rem}.wt th,.wt td{padding:8px 3px}.chart{padding:18px 14px}.hero .cta .btn{flex:1 1 auto;text-align:center}.ed-stats b{font-size:1.4rem}}
+@media (max-width:440px){.nav .btn{padding:8px 14px;font-size:.85rem}.proof{grid-template-columns:minmax(0,1fr);gap:16px}.proof li{flex-direction:row;align-items:baseline;gap:14px}.proof b{min-width:3.6em}.steps,.tiles,.shifts ol,.abilities{grid-template-columns:minmax(0,1fr)}.heat{min-width:0;border-spacing:2px}.heat tbody th small{display:none}.heat tbody th{width:18%;font-size:.78rem;white-space:nowrap}.heat thead th{font-size:.64rem}.heat td{height:36px;font-size:.92rem}.wt{min-width:0;font-size:.76rem}.wt th,.wt td{padding:8px 3px}.chart{padding:18px 14px}.ed-stats b{font-size:1.4rem}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
 
-<header class="grid">
+<header>
   <div class="wrap">
     <nav class="nav" aria-label="Main">
       <a class="brand" href="#top" id="top"><i aria-hidden="true"></i><span><b>Think</b> Studio</span></a>
@@ -242,18 +252,19 @@ p{margin:0}
       <a class="btn solid" href="#contact">Contact us</a>
     </nav>
     <div class="hero">
-      <div>
-        <span class="note">Design, systems and strategy consultancy · Delhi · Assam</span>
-        <h1>Design, systems and strategy, grounded in <span class="hl">how people think</span>.</h1>
-        <p>Advisory and design for government, corporates and education. Products, spaces, systems and policy, delivered with measurable capability building.</p>
-        <div class="cta">
-          <a class="btn solid" href="#contact">Discuss an engagement</a>
-          <a class="btn" href="#practices">Our practices</a>
-        </div>
+      <span class="note">Design · Systems · Strategy</span>
+      <h1>Better systems.<br><span class="soft">Clearer thinking.</span></h1>
+      <p>A design, systems and strategy consultancy for government, corporates and education, building the cognitive capability that makes change last.</p>
+      <div class="cta">
+        <a class="btn solid" href="#contact">Discuss an engagement</a>
+        <a class="tlink" href="#practices">Explore our practices <span aria-hidden="true">→</span></a>
       </div>
-      <aside class="margin">
-        <p><b>An Unfolded Future company</b>Consulting revenue funds Drishta, our metacognition programme.</p>
-      </aside>
+      <p class="proof-k">Founders' track record</p>
+      <ul class="proof" aria-label="Founders' track record">
+        <li><b>2,086+</b><span>applicants across two design bootcamps</span></li>
+        <li><b>70+</b><span>KPIs designed for 15 government schemes</span></li>
+        <li><b>6</b><span>dimensions in our Metacognition Impact Framework</span></li>
+      </ul>
     </div>
   </div>
 </header>
@@ -501,7 +512,7 @@ p{margin:0}
   <div class="wrap">
     <div>
       <span class="note">Unfolded Future</span>
-      <h2>Consulting that sustains <span class="hl">community</span> impact.</h2>
+      <h2>Consulting that sustains <em class="acc">community</em> impact.</h2>
     </div>
     <div>
       <p>Think Studio is the consulting arm of Unfolded Future. Its revenue funds Drishta, a community programme building self-awareness and emotional regulation through metacognition. <a href="https://drishta.unfoldedfuture.com">Visit Drishta</a></p>
