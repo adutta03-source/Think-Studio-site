@@ -180,6 +180,11 @@ p{margin:0}
 .ed-points li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;background:var(--mark)}
 .ed-points b{color:var(--ink);font-weight:600}
 .ed-close{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;margin-top:48px;align-items:start}
+.ptitle{font-size:.9rem;color:var(--ink);margin-bottom:12px}
+.person .chips{margin:0 0 14px}
+.creds{list-style:none;margin:0;padding:0;display:grid;gap:7px;border-top:1px solid var(--line);padding-top:12px}
+.creds li{font-size:.86rem;color:var(--muted);padding-left:14px;position:relative;line-height:1.5}
+.creds li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;background:var(--mark)}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .steps{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s}
 .steps li{counter-increment:s;padding-top:18px;border-top:3px solid var(--ink)}
@@ -236,14 +241,14 @@ p{margin:0}
       <div>
         <span class="note">Design, systems and strategy consultancy · Delhi · Assam</span>
         <h1>Design, systems and strategy, grounded in <span class="hl">how people think</span>.</h1>
-        <p>Think Studio advises public institutions, companies and educators on the design of products, spaces, systems and policies, and builds the cognitive capabilities their people need to sustain and improve them.</p>
+        <p>Advisory and design for government, corporates and education. Products, spaces, systems and policy, delivered with measurable capability building.</p>
         <div class="cta">
           <a class="btn" href="#contact">Discuss an engagement</a>
           <a class="btn" href="#practices">Our practices</a>
         </div>
       </div>
       <aside class="margin">
-        <p><b>An Unfolded Future company</b>Revenue from consulting engagements supports Drishta, our community programme on metacognition.</p>
+        <p><b>An Unfolded Future company</b>Consulting revenue funds Drishta, our metacognition programme.</p>
       </aside>
     </div>
   </div>
@@ -255,7 +260,7 @@ p{margin:0}
       <div><span class="note">Practices</span></div>
       <div>
         <h2>Two integrated practices.</h2>
-        <p>The design practice addresses what an organisation delivers and how it operates. The cognitive practice addresses how its people perceive, decide and learn. Most engagements combine both.</p>
+        <p>Design: what an organisation delivers and how it operates. Cognitive: how its people perceive, decide and learn. Most engagements integrate both.</p>
       </div>
     </div>
 
@@ -263,17 +268,17 @@ p{margin:0}
       <div class="ph">
         <span class="tag">Design services</span>
         <h3>Design, systems and strategy</h3>
-        <p>For organisations designing, redesigning or redirecting a product, service, system or policy.</p>
+        <p>Design, redesign and transformation of products, services, systems and policy.</p>
       </div>
       <div class="cats">
         <div class="cat">
           <h4>Products and experiences</h4>
-          <p>Physical products, spaces and digital services, designed around the needs of the people who use them.</p>
+          <p>User-centred products, spaces and digital services.</p>
           <ul class="chips"><li>Product design</li><li>Space design</li><li>Interaction design</li></ul>
         </div>
         <div class="cat">
           <h4>Systems and strategy</h4>
-          <p>The systems, policies and strategic direction that govern how an organisation or public programme performs.</p>
+          <p>Systems architecture, policy and strategic direction.</p>
           <ul class="chips"><li>Systems design</li><li>Policy design</li><li>Strategic consultancy</li></ul>
         </div>
       </div>
@@ -283,17 +288,17 @@ p{margin:0}
       <div class="ph">
         <span class="tag">Cognitive services</span>
         <h3>Thinking, behaviour and learning</h3>
-        <p>For teams and institutions seeking clearer thinking, stronger collaboration and continuous learning.</p>
+        <p>Capability building for clearer thinking, stronger collaboration and continuous learning.</p>
       </div>
       <div class="cats">
         <div class="cat">
           <h4>Disciplines</h4>
-          <p>The bodies of knowledge we apply and teach: how people perceive, decide and work together.</p>
+          <p>Evidence-based methods for perception, decision-making and collaboration.</p>
           <ul class="chips"><li>Design thinking</li><li>Systems thinking</li><li>Psychology and human behaviour</li><li>Metacognition</li></ul>
         </div>
         <div class="cat">
           <h4>Delivery formats</h4>
-          <p>Engagements range from a single workshop to a multi-month fellowship.</p>
+          <p>From single workshops to multi-month fellowships.</p>
           <ul class="chips"><li>Corporate capacity building</li><li>Workshops and retreats</li><li>Mentoring</li><li>Fellowships</li></ul>
         </div>
       </div>
@@ -306,9 +311,9 @@ p{margin:0}
       <div><h2>Sectors we serve.</h2></div>
     </div>
     <ul class="sectors">
-      <li><h3>Government and public institutions</h3><p>Policy and programme design, systems design, and monitoring and evaluation.</p></li>
-      <li><h3>Corporates</h3><p>Product, space and interaction design, strategy, and organisational capacity building.</p></li>
-      <li><h3>Education</h3><p>Curriculum and programme design, workshops, retreats, mentoring and fellowships for schools and universities.</p></li>
+      <li><h3>Government and public institutions</h3><p>Policy and programme design · Systems design · Monitoring and evaluation</p></li>
+      <li><h3>Corporates</h3><p>Product, space and interaction design · Strategy · Capability building</p></li>
+      <li><h3>Education</h3><p>Curriculum and programme design · Workshops and retreats · Mentoring and fellowships</p></li>
     </ul>
   </section>
 
@@ -476,14 +481,14 @@ p{margin:0}
       <div><span class="note">How we work</span></div>
       <div>
         <h2>A four-stage engagement model.</h2>
-        <p>We invest deliberately in discovery and problem definition, so that every solution addresses the right problem.</p>
+        <p>Front-loaded discovery and problem definition, so every solution targets the right problem.</p>
       </div>
     </div>
     <ol class="steps">
-      <li><h3>Discover</h3><p>Stakeholder and user research to establish how the current system actually operates.</p></li>
-      <li><h3>Define</h3><p>A written brief agreeing the problem, the people it serves and the measures of success.</p></li>
-      <li><h3>Design</h3><p>Iterative development with early prototypes and structured client review at each stage.</p></li>
-      <li><h3>Deliver</h3><p>Final outputs, implementation guidance and an evaluation plan, so results can be sustained and measured.</p></li>
+      <li><h3>Discover</h3><p>Stakeholder research · Current-state mapping</p></li>
+      <li><h3>Define</h3><p>Problem statement · Scope · Success metrics</p></li>
+      <li><h3>Design</h3><p>Rapid prototyping · Iterative client review</p></li>
+      <li><h3>Deliver</h3><p>Implementation support · Evaluation plan · Handover</p></li>
     </ol>
   </section>
 </main>
@@ -495,7 +500,7 @@ p{margin:0}
       <h2>Consulting that sustains <span class="hl">community</span> impact.</h2>
     </div>
     <div>
-      <p>Think Studio is the consulting arm of Unfolded Future. Its revenue supports Drishta, a community programme of gatherings and retreats that develops self-awareness and emotional regulation through metacognition. <a href="https://drishta.unfoldedfuture.com">Visit Drishta</a></p>
+      <p>Think Studio is the consulting arm of Unfolded Future. Its revenue funds Drishta, a community programme building self-awareness and emotional regulation through metacognition. <a href="https://drishta.unfoldedfuture.com">Visit Drishta</a></p>
     </div>
   </div>
 </section>
@@ -508,14 +513,27 @@ p{margin:0}
     </div>
     <div class="people">
       <div class="person">
-        <h3>Dr. Partha Pratim Das</h3>
+        <h3>Dr Partha Pratim Das</h3>
         <span class="note">Founder</span>
-        <p>Assistant Professor, Department of Design, Delhi Technological University. Specialises in systems design, interaction and experience design, pedagogy and policy design. M.Des (Product Design) and PhD (Systems Design for Sustainable Rural Sanitation), IIT Delhi.</p>
+        <p class="ptitle">Assistant Professor, Department of Design, Delhi Technological University</p>
+        <ul class="chips"><li>Systems design</li><li>Interaction and experience design</li><li>Policy design</li><li>Pedagogy</li><li>Sustainable infrastructure</li></ul>
+        <ul class="creds">
+          <li>PhD, Systems Design (Sustainable Rural Sanitation), IIT Delhi</li>
+          <li>M.Des, Product Design, IIT Delhi · M.Tech, Environmental Engineering · B.Tech, Civil Engineering</li>
+          <li>Programme Lead, Design Bootcamp, DTU (2025, 2026)</li>
+          <li>Guest Editor, <cite>Design for All</cite>, Vol 21 No 2 (2026)</li>
+        </ul>
       </div>
       <div class="person">
         <h3>Akanshya Dutta</h3>
         <span class="note">Co-founder</span>
-        <p>Independent researcher and consultant; Visiting Faculty, Department of Design, Delhi Technological University, teaching data visualisation and social media. Former policy monitoring and evaluation specialist at the Chief Minister's Secretariat, Government of Assam.</p>
+        <p class="ptitle">Independent Researcher and Consultant · Visiting Faculty, Department of Design, Delhi Technological University</p>
+        <ul class="chips"><li>Policy design</li><li>Monitoring and evaluation</li><li>KPI frameworks</li><li>Data visualisation</li><li>Metacognition</li></ul>
+        <ul class="creds">
+          <li>Chief Minister's Office, Government of Assam: led the Policy Monitoring Dashboard; drafted the Assam Hydrogen Policy 2024; built KPI frameworks for 15+ government schemes</li>
+          <li>Visiting Faculty, DTU: Data Visualisation; Current Trends and Social Media</li>
+          <li>Founder, Drishta · Developer, Metacognition Impact Framework</li>
+        </ul>
       </div>
     </div>
   </section>
