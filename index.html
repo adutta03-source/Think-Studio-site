@@ -66,10 +66,12 @@ p{margin:0}
 .tag{display:inline-block;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:var(--mark);color:var(--mark-ink);padding:4px 10px}
 .ph h3{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:16px}
 .ph p{color:var(--muted);margin-top:12px;max-width:26em}
-.caps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
-.caps li{padding-block:18px;border-bottom:1px solid var(--line)}
-.caps h4{font-family:var(--display);font-weight:500;font-size:1.25rem;letter-spacing:-.015em;margin:0 0 6px}
-.caps p{color:var(--muted);font-size:.94rem}
+.cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px}
+.cat{border-top:1px solid var(--line);padding-top:18px}
+.cat h4{font-family:var(--display);font-weight:500;font-size:1.4rem;letter-spacing:-.015em;margin:0 0 8px}
+.cat p{color:var(--muted);font-size:.95rem}
+.chips{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font-size:.86rem;font-weight:500;padding:6px 12px;border:1px solid var(--ink);border-radius:999px}
 .sectors{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 40px}
 .sectors li{border-top:1px solid var(--ink);padding-top:18px}
 .sectors h3{font-size:1.45rem;margin-bottom:8px}
@@ -103,9 +105,8 @@ p{margin:0}
 @media (max-width:820px){
   .nav ul{display:none}
   .hero,.head,.why .wrap,.people{grid-template-columns:minmax(0,1fr)}
-  .practice,.sectors{grid-template-columns:minmax(0,1fr)}
-  .caps{grid-template-columns:minmax(0,1fr)}
-  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .practice,.sectors,.cats{grid-template-columns:minmax(0,1fr)}
+    .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:440px){.steps{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
@@ -156,14 +157,18 @@ p{margin:0}
         <h3>Design, systems and strategy</h3>
         <p>For organisations that need something designed, rebuilt or set on a new course.</p>
       </div>
-      <ul class="caps">
-          <li><h4>Product design</h4><p>Physical and digital products, from user research and concept to production-ready design.</p></li>
-          <li><h4>Space design</h4><p>Interiors, exhibitions and learning environments planned around how people move, work and gather.</p></li>
-          <li><h4>Interaction design</h4><p>Digital services, apps and interfaces that are clear to use and practical to maintain.</p></li>
-          <li><h4>Systems design</h4><p>Services and infrastructure mapped end to end, so that improving one part does not break another.</p></li>
-          <li><h4>Policy design</h4><p>Policies and public programmes shaped with the people they serve, with monitoring and evaluation built in.</p></li>
-          <li><h4>Strategic consultancy</h4><p>Direction, programme design and roadmaps for leadership teams facing complex decisions.</p></li>
-      </ul>
+      <div class="cats">
+        <div class="cat">
+          <h4>What people use</h4>
+          <p>Products, places and digital services designed around the people who use them every day.</p>
+          <ul class="chips"><li>Product design</li><li>Space design</li><li>Interaction design</li></ul>
+        </div>
+        <div class="cat">
+          <h4>How things run</h4>
+          <p>The systems, policies and strategy behind an organisation or public programme.</p>
+          <ul class="chips"><li>Systems design</li><li>Policy design</li><li>Strategic consultancy</li></ul>
+        </div>
+      </div>
     </div>
 
     <div class="practice">
@@ -172,16 +177,18 @@ p{margin:0}
         <h3>Thinking, behaviour and learning</h3>
         <p>For teams and institutions that want people to think more clearly, work better together and keep learning.</p>
       </div>
-      <ul class="caps">
-          <li><h4>Design thinking</h4><p>Hands-on methods for teams to frame problems well and test ideas quickly.</p></li>
-          <li><h4>Systems thinking</h4><p>Tools for seeing causes, feedback loops and leverage points in complex situations.</p></li>
-          <li><h4>Psychology and human behaviour</h4><p>Behavioural insight applied to products, policies and the way organisations work.</p></li>
-          <li><h4>Metacognition</h4><p>Training people to notice how they think and decide, and to stay steady under pressure.</p></li>
-          <li><h4>Mentoring</h4><p>One-to-one guidance for founders, leaders and early-career practitioners.</p></li>
-          <li><h4>Corporate capacity building</h4><p>Programmes that build lasting skills across teams, not one-off sessions.</p></li>
-          <li><h4>Educational workshops and retreats</h4><p>For schools, universities and organisations, in the classroom or in residence.</p></li>
-          <li><h4>Fellowships</h4><p>Structured programmes that support emerging practitioners over months, not days.</p></li>
-      </ul>
+      <div class="cats">
+        <div class="cat">
+          <h4>Ways of thinking</h4>
+          <p>The disciplines we teach and apply: how people perceive, decide and work together.</p>
+          <ul class="chips"><li>Design thinking</li><li>Systems thinking</li><li>Psychology and human behaviour</li><li>Metacognition</li></ul>
+        </div>
+        <div class="cat">
+          <h4>Programmes</h4>
+          <p>How we deliver them, from a single workshop to a months-long fellowship.</p>
+          <ul class="chips"><li>Corporate capacity building</li><li>Workshops and retreats</li><li>Mentoring</li><li>Fellowships</li></ul>
+        </div>
+      </div>
     </div>
   </section>
 
