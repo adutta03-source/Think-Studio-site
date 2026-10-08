@@ -53,7 +53,7 @@ p{margin:0}
 .btn.solid:hover{background:transparent;color:var(--ink)}
 
 .hero{display:block;padding-block:clamp(56px,10vw,136px) clamp(48px,7vw,88px)}
-.hero h1{font-size:clamp(2.9rem,8.6vw,6.6rem);font-weight:500;line-height:.98;letter-spacing:-.045em;margin-top:22px}
+.hero h1{font-size:clamp(2.9rem,7.2vw,5.6rem);font-weight:500;line-height:.98;letter-spacing:-.045em;margin-top:22px}
 .hero h1 .soft{color:var(--mark-text)}
 .hero p{max-width:30em;margin-top:28px;font-size:clamp(1.08rem,1.5vw,1.25rem);line-height:1.55;color:var(--muted)}
 .hero .cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:36px}
@@ -278,8 +278,6 @@ p{margin:0}
 .deco .acc{fill:var(--mark)}
 header.hd{position:relative;overflow:hidden}
 header.hd .wrap{position:relative;z-index:1}
-.d-sch{right:max(-60px,calc((100vw - 1160px)/2 - 40px));top:90px;width:min(440px,32vw);opacity:.34;z-index:0;
-  -webkit-mask-image:linear-gradient(to left,#000 45%,transparent 95%);mask-image:linear-gradient(to left,#000 45%,transparent 95%)}
 .d-icon{position:relative;display:block;width:132px;margin-top:28px;opacity:.7}
 #process .steps{margin-top:20px}
 .why{position:relative;overflow:hidden}
@@ -291,8 +289,7 @@ header.hd .wrap{position:relative;z-index:1}
 .contact>*:not(.deco){position:relative;z-index:1}
 .d-arc{right:-40px;bottom:-20px;width:min(560px,50%);opacity:.28}
 @media (max-width:820px){
-  .d-sch{width:78vw;right:-28vw;top:60px;opacity:.2}
-  .d-icon{width:104px;margin-top:20px}
+    .d-icon{width:104px;margin-top:20px}
     .d-band{width:120%;right:-40%;opacity:.18}
   .d-arc{width:90%;right:-30%;opacity:.18}
 }
@@ -310,10 +307,34 @@ header.hd .wrap{position:relative;z-index:1}
 .dd2 .n0{fill:var(--ink)}.dd2 .n1{fill:var(--accent)}.dd2 .n2{fill:var(--mark-text)}
 .dd2 .nl{font-family:var(--body);font-weight:500;fill:var(--ink)}
 @media (max-width:820px){.dd-wide{display:none}.dd-narrow{display:block;margin-top:32px}}
+/* hero composition + sector glyphs */
+.hero{position:relative}
+.hero>*:not(.k-hero){position:relative;z-index:1}
+.k-hero{position:absolute;right:0;top:clamp(20px,4vw,56px);width:min(400px,30vw);height:auto;z-index:0;pointer-events:none}
+.k-ln{fill:none;stroke:var(--ink);stroke-width:1.3;opacity:.75}
+.k-th{fill:none;stroke:var(--ink);stroke-width:.8;opacity:.45}
+.k-tri{fill:var(--mark);opacity:.9}
+.k-nd{fill:var(--ink)}
+.k-c1{fill:var(--mark)}
+.k-c2{fill:var(--accent)}
+.k-c3{fill:var(--ink)}
+.k-c4{fill:none;stroke:var(--ink);stroke-width:1.3}
+.k-ring{fill:none;stroke:var(--ink);stroke-width:1;opacity:.5}
+.k-dash{fill:none;stroke:var(--ink);stroke-width:1;stroke-dasharray:2 5;opacity:.6}
+.k-o{fill:none;stroke:var(--ink);stroke-width:1}
+.gl{display:block;width:30px;height:60px;margin-bottom:14px}
+.g-ln{fill:none;stroke:var(--ink);stroke-width:1.3}
+.g-o{fill:none;stroke:var(--ink);stroke-width:1.2}
+.g-dot,.g-f{fill:var(--ink)}
+.g-acc{fill:var(--mark)}
+.g-accr{fill:var(--mark);stroke:var(--ink);stroke-width:1.3}
+@media (max-width:1100px){.k-hero{width:min(340px,30vw);opacity:.85}}
+@media (max-width:820px){
+  .k-hero{position:relative;display:block;width:min(62%,250px);margin:0 0 8px auto;top:auto;right:auto}
+}
 </style>
 
 <header class="hd">
-  <svg class="deco d-sch" viewBox="0 0 560 600"  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path class="ln" d="M60 39.8V530.4"/><path class="ln" d="M52 78.8H68M52 82.8H68M52 86.8H68"/><circle class="dot" cx="60" cy="120.2" r="2.6"/><path class="ln" d="M52 173.7H68M52 177.7H68M52 181.7H68"/><circle class="ring bg" cx="60" cy="224.8" r="6"/><circle class="dot" cx="60" cy="251.3" r="2.6"/><circle class="ring bg" cx="60" cy="291.9" r="6"/><rect class="ring bg" x="51" y="343.2" width="18" height="12"/><circle class="dot" cx="60" cy="390.1" r="2.6"/><circle class="ring bg" cx="60" cy="442.3" r="3.2"/><circle class="ring bg" cx="60" cy="450.3" r="3.2"/><circle class="ring bg" cx="60" cy="458.3" r="3.2"/><circle class="ring bg" cx="60" cy="466.3" r="3.2"/><circle class="ring bg" cx="60" cy="501.4" r="3.2"/><circle class="ring bg" cx="60" cy="509.4" r="3.2"/><circle class="ring bg" cx="60" cy="517.4" r="3.2"/><circle class="ring bg" cx="60" cy="525.4" r="3.2"/><path class="ln" d="M140 97.9V570.1"/><circle class="dot" cx="140" cy="118.6" r="2.6"/><circle class="dot" cx="140" cy="147.6" r="2.6"/><circle class="ring bg" cx="140" cy="174.2" r="11"/><path class="ln" d="M132 211.9H148M132 215.9H148M132 219.9H148"/><circle class="ring bg" cx="140" cy="252.2" r="6"/><circle class="ring bg" cx="140" cy="280.8" r="11"/><circle class="dot" cx="140" cy="339.7" r="2.6"/><circle class="dot" cx="140" cy="391.4" r="2.6"/><circle class="dot" cx="140" cy="437.1" r="2.6"/><path class="ln" d="M132 467.3H148M132 471.3H148M132 475.3H148"/><circle class="ring bg" cx="140" cy="529.4" r="6"/><path class="ln" d="M220 69.2V478.4"/><circle class="ring bg" cx="220" cy="102.7" r="3.2"/><circle class="ring bg" cx="220" cy="110.7" r="3.2"/><circle class="ring bg" cx="220" cy="118.7" r="3.2"/><circle class="ring bg" cx="220" cy="126.7" r="3.2"/><circle class="ring bg" cx="220" cy="173.8" r="6"/><circle class="dot" cx="220" cy="205.2" r="2.6"/><circle class="ring bg" cx="220" cy="264.6" r="6"/><circle class="dot" cx="220" cy="309.4" r="2.6"/><rect class="ring bg" x="211" y="336.9" width="18" height="12"/><rect class="ring bg" x="211" y="381.8" width="18" height="12"/><circle class="ring bg" cx="220" cy="420" r="8"/><path class="ln" d="M300 59.9V541.9"/><circle class="ring bg" cx="300" cy="107.8" r="6"/><circle class="dot" cx="300" cy="136" r="2.6"/><circle class="ring bg" cx="300" cy="188.4" r="3.2"/><circle class="ring bg" cx="300" cy="196.4" r="3.2"/><circle class="ring bg" cx="300" cy="204.4" r="3.2"/><circle class="ring bg" cx="300" cy="212.4" r="3.2"/><circle class="ring bg" cx="300" cy="220.4" r="3.2"/><path class="ln" d="M292 247.7H308M292 251.7H308M292 255.7H308"/><circle class="ring bg" cx="300" cy="304" r="6"/><rect class="ring bg" x="291" y="356.7" width="18" height="12"/><path class="ln" d="M292 418.8H308M292 422.8H308M292 426.8H308"/><circle class="ring bg" cx="300" cy="465.5" r="6"/><circle class="ring bg" cx="300" cy="497" r="8"/><path class="ln" d="M380 78V553.9"/><circle class="ring bg" cx="380" cy="99.5" r="8"/><circle class="ring bg" cx="380" cy="126.7" r="8"/><circle class="ring bg" cx="380" cy="155.1" r="3.2"/><circle class="ring bg" cx="380" cy="163.1" r="3.2"/><circle class="ring bg" cx="380" cy="171.1" r="3.2"/><circle class="dot" cx="380" cy="246.5" r="2.6"/><circle class="ring bg" cx="380" cy="288.8" r="11"/><circle class="dot" cx="380" cy="332.7" r="2.6"/><circle class="ring bg" cx="380" cy="359.6" r="8"/><circle class="dot" cx="380" cy="412.7" r="2.6"/><circle class="ring bg" cx="380" cy="459.1" r="3.2"/><circle class="ring bg" cx="380" cy="467.1" r="3.2"/><circle class="ring bg" cx="380" cy="475.1" r="3.2"/><circle class="ring bg" cx="380" cy="483.1" r="3.2"/><circle class="ring bg" cx="380" cy="491.1" r="3.2"/><path class="ln" d="M460 77.2V442.2"/><circle class="ring bg" cx="460" cy="114.9" r="11"/><rect class="ring bg" x="451" y="135.2" width="18" height="12"/><circle class="ring bg" cx="460" cy="199.7" r="11"/><circle class="ring bg" cx="460" cy="236.7" r="11"/><rect class="ring bg" x="451" y="271.1" width="18" height="12"/><circle class="dot" cx="460" cy="328.6" r="2.6"/><circle class="ring bg" cx="460" cy="359.3" r="8"/><circle class="ring bg" cx="460" cy="388.5" r="8"/><path class="ln" d="M520 28.6V439.1"/><circle class="ring bg" cx="520" cy="57.1" r="3.2"/><circle class="ring bg" cx="520" cy="65.1" r="3.2"/><circle class="ring bg" cx="520" cy="73.1" r="3.2"/><circle class="ring bg" cx="520" cy="81.1" r="3.2"/><circle class="dot" cx="520" cy="128.5" r="2.6"/><circle class="ring bg" cx="520" cy="175.7" r="8"/><circle class="dot" cx="520" cy="208.5" r="2.6"/><rect class="ring bg" x="511" y="254.3" width="18" height="12"/><circle class="dot" cx="520" cy="303.4" r="2.6"/><circle class="dot" cx="520" cy="331.3" r="2.6"/><circle class="dot" cx="520" cy="370.5" r="2.6"/><path class="ln" d="M512 410.1H528M512 414.1H528M512 418.1H528"/><path class="ln" d="M140 171H300"/><path class="ln" d="M380 192.9H460"/><path class="ln" d="M140 220H220"/><path class="ln" d="M460 404.3H520"/><path class="ln" d="M380 369.1H460"/><path class="ln" d="M380 115.5H520"/><path class="ln" d="M60 263H220"/><path class="ln" d="M220 428.2H300"/><path class="ln" d="M220 331.8H380"/><path class="ln" d="M380 148.2H520"/><path class="ln" d="M220 431.7H300"/><path class="ln" d="M60 194.5H140"/><path class="ln" d="M60 392.5H220"/><path class="ln" d="M60 305.6H140"/><ellipse class="ln" cx="380" cy="286.4" rx="46" ry="4"/><ellipse class="ln" cx="60" cy="304" rx="46" ry="4"/><ellipse class="ln" cx="460" cy="232.8" rx="46" ry="4"/><circle class="acc" cx="220" cy="260" r="9"/><circle class="acc" cx="460" cy="410" r="9"/><path class="ln dash" d="M220 260 C 300 260, 380 410, 460 410"/></svg>
   <div class="wrap">
     <nav class="nav" aria-label="Main">
       <a class="brand" href="#top" id="top"><i aria-hidden="true"></i><span><b>Think</b> Studio</span></a>
@@ -327,6 +348,7 @@ header.hd .wrap{position:relative;z-index:1}
       <a class="btn solid" href="#contact">Contact us</a>
     </nav>
     <div class="hero">
+      <svg class="k-hero" viewBox="0 0 440 520" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path class="k-ln" d="M70 20L190 500"/><path class="k-ln" d="M150 90L300 470"/><path class="k-ln" d="M250 140L400 520"/><path class="k-ln" d="M110 130L330 330"/><path class="k-ln" d="M120 300H330M134 312H344"/><path class="k-ln" d="M90 418L330 300M96 430L336 312"/><path class="k-th" d="M300 40L390 60"/><path class="k-th" d="M390 60L410 120"/><path class="k-th" d="M410 120L350 150"/><path class="k-th" d="M350 150L330 100"/><path class="k-th" d="M330 100L300 40"/><path class="k-th" d="M330 100L390 60"/><path class="k-th" d="M350 150L380 190"/><path class="k-th" d="M410 120L380 190"/><path class="k-th" d="M260 70L300 40"/><path class="k-th" d="M260 70L330 100"/><path class="k-tri" d="M330 100L390 60L410 120Z"/><circle class="k-nd" cx="300" cy="40" r="4"/><circle class="k-nd" cx="390" cy="60" r="3"/><circle class="k-nd" cx="410" cy="120" r="4"/><circle class="k-nd" cx="350" cy="150" r="4"/><circle class="k-nd" cx="380" cy="190" r="3"/><circle class="k-nd" cx="330" cy="100" r="3"/><circle class="k-nd" cx="260" cy="70" r="3"/><circle class="k-c1" cx="128" cy="150" r="30"/><circle class="k-c2" cx="236" cy="306" r="16"/><circle class="k-c3" cx="282" cy="236" r="10"/><circle class="k-c4" cx="130" cy="420" r="26"/><circle class="k-ring" cx="128" cy="150" r="52"/><circle class="k-dash" cx="236" cy="306" r="44"/><path class="k-ln" d="M372 400h22M372 408h22M372 416h22"/><circle class="k-o" cx="200" cy="470" r="3"/><circle class="k-o" cx="214" cy="470" r="3"/><circle class="k-o" cx="228" cy="470" r="3"/><circle class="k-o" cx="242" cy="470" r="3"/><circle class="k-o" cx="256" cy="470" r="3"/><circle class="k-nd" cx="60" cy="300" r="3"/><circle class="k-nd" cx="410" cy="300" r="3"/></svg>
       <span class="note">Design · Systems · Strategy</span>
       <h1>Better systems.<br><span class="soft">Clearer thinking.</span></h1>
       <p>A design, systems and strategy consultancy for government, corporates and education, building the cognitive capability that makes change last.</p>
@@ -401,9 +423,9 @@ header.hd .wrap{position:relative;z-index:1}
       <div><h2>Sectors we serve.</h2></div>
     </div>
     <ul class="sectors">
-      <li><h3>Government and public institutions</h3><p>Policy and programme design · Systems design · Monitoring and evaluation</p></li>
-      <li><h3>Corporates</h3><p>Product, space and interaction design · Strategy · Capability building</p></li>
-      <li><h3>Education</h3><p>Curriculum and programme design · Workshops and retreats · Mentoring and fellowships</p></li>
+      <li><svg class="gl" viewBox="0 0 48 96" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path class="g-ln" d="M24 4V92"/><path class="g-ln" d="M6 30L24 14L42 30Z"/><path class="g-ln" d="M12 34V62M20 34V62M28 34V62M36 34V62M6 66H42"/><circle class="g-acc" cx="24" cy="24" r="3"/><circle class="g-o" cx="24" cy="80" r="3"/></svg><h3>Government and public institutions</h3><p>Policy and programme design · Systems design · Monitoring and evaluation</p></li>
+      <li><svg class="gl" viewBox="0 0 48 96" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path class="g-ln" d="M24 4V92"/><rect class="g-ln" x="8" y="20" width="14" height="14"/><rect class="g-ln" x="26" y="20" width="14" height="14"/><rect class="g-ln" x="8" y="38" width="14" height="14"/><rect class="g-accr" x="26" y="38" width="14" height="14"/><path class="g-f" d="M19 70l5 10 5-10z"/></svg><h3>Corporates</h3><p>Product, space and interaction design · Strategy · Capability building</p></li>
+      <li><svg class="gl" viewBox="0 0 48 96" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path class="g-ln" d="M24 4V92"/><path class="g-ln" d="M4 44Q14 36 24 44Q34 36 44 44V62Q34 54 24 62Q14 54 4 62Z"/><circle class="g-acc" cx="24" cy="24" r="5"/><circle class="g-ln" cx="24" cy="24" r="10"/><circle class="g-o" cx="24" cy="80" r="3"/></svg><h3>Education</h3><p>Curriculum and programme design · Workshops and retreats · Mentoring and fellowships</p></li>
     </ul>
   </section>
 
