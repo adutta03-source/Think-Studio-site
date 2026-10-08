@@ -281,9 +281,6 @@ header.hd .wrap{position:relative;z-index:1}
 .d-sch{right:max(-60px,calc((100vw - 1160px)/2 - 40px));top:90px;width:min(440px,32vw);opacity:.34;z-index:0;
   -webkit-mask-image:linear-gradient(to left,#000 45%,transparent 95%);mask-image:linear-gradient(to left,#000 45%,transparent 95%)}
 .d-icon{position:relative;display:block;width:132px;margin-top:28px;opacity:.7}
-.d-dd{position:relative;display:block;width:100%;height:clamp(90px,11vw,150px);margin-top:40px;opacity:.55}
-.d-dd .lbl{font-family:var(--body);font-size:12px;letter-spacing:.12em;text-transform:uppercase;fill:var(--muted)}
-.d-dd .ln{vector-effect:non-scaling-stroke}
 #process .steps{margin-top:20px}
 .why{position:relative;overflow:hidden}
 .why .wrap{position:relative;z-index:1}
@@ -296,10 +293,23 @@ header.hd .wrap{position:relative;z-index:1}
 @media (max-width:820px){
   .d-sch{width:78vw;right:-28vw;top:60px;opacity:.2}
   .d-icon{width:104px;margin-top:20px}
-  .d-dd .lbl{font-size:18px}
-  .d-band{width:120%;right:-40%;opacity:.18}
+    .d-band{width:120%;right:-40%;opacity:.18}
   .d-arc{width:90%;right:-30%;opacity:.18}
 }
+.dd2{display:block;width:100%;height:auto;margin-top:44px;overflow:visible}
+.dd-narrow{display:none}
+.dd2 .dz{stroke-width:1.5}
+.dd2 .p1{fill:color-mix(in oklab,var(--accent) 10%,transparent);stroke:var(--accent)}
+.dd2 .p2{fill:color-mix(in oklab,var(--mark) 22%,transparent);stroke:var(--mark-text)}
+.dd2 .dv{stroke:var(--line);stroke-width:1;stroke-dasharray:3 5}
+.dd2 .ax{stroke:var(--ink);stroke-width:1;opacity:.25}
+.dd2 .sp{font-family:var(--body);font-weight:600;letter-spacing:.14em;fill:var(--muted)}
+.dd2 .st{font-family:var(--display);font-weight:500;fill:var(--ink)}
+.dd2 .sb{font-family:var(--body);fill:var(--muted);letter-spacing:.04em}
+.dd2 .nd{stroke:var(--paper);stroke-width:3}
+.dd2 .n0{fill:var(--ink)}.dd2 .n1{fill:var(--accent)}.dd2 .n2{fill:var(--mark-text)}
+.dd2 .nl{font-family:var(--body);font-weight:500;fill:var(--ink)}
+@media (max-width:820px){.dd-wide{display:none}.dd-narrow{display:block;margin-top:32px}}
 </style>
 
 <header class="hd">
@@ -583,7 +593,7 @@ header.hd .wrap{position:relative;z-index:1}
         <p>Front-loaded discovery and problem definition, so every solution targets the right problem.</p>
       </div>
     </div>
-    <svg class="deco d-dd" viewBox="0 0 1000 150" preserveAspectRatio="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path class="ln" d="M0 75.0 L250 12 L500 75.0 L250 138 Z"/><path class="ln" d="M500 75.0 L750 12 L1000 75.0 L750 138 Z"/><path class="ln dash" d="M0 75.0H1000"/><path class="ln thin" d="M250 12V138"/><path class="ln thin" d="M750 12V138"/><circle class="acc" cx="0" cy="75.0" r="6"/><circle class="acc" cx="500" cy="75.0" r="6"/><circle class="acc" cx="1000" cy="75.0" r="6"/><circle class="dot" cx="250" cy="12" r="3.5"/><circle class="dot" cx="250" cy="138" r="3.5"/><circle class="dot" cx="750" cy="12" r="3.5"/><circle class="dot" cx="750" cy="138" r="3.5"/><text class="lbl" x="125" y="67.0" text-anchor="middle">Diverge</text><text class="lbl" x="375" y="67.0" text-anchor="middle">Converge</text><text class="lbl" x="625" y="67.0" text-anchor="middle">Diverge</text><text class="lbl" x="875" y="67.0" text-anchor="middle">Converge</text></svg>
+    <svg class="dd2 dd-wide" viewBox="0 0 1000 230" role="img" aria-label="Double diamond: discover and define the problem, then design and deliver the solution" xmlns="http://www.w3.org/2000/svg"><path class="dz p1" d="M0 110.0 L250.0 34 L500.0 110.0 L250.0 186 Z"/><path class="dz p2" d="M500.0 110.0 L750.0 34 L1000.0 110.0 L750.0 186 Z"/><path class="dv" d="M250.0 34V186M750.0 34V186"/><path class="ax" d="M0 110.0H1000"/><text class="sp" x="250.0" y="20" text-anchor="middle" font-size="12">PROBLEM SPACE</text><text class="sp" x="750.0" y="20" text-anchor="middle" font-size="12">SOLUTION SPACE</text><text class="st" x="145" y="104.0" text-anchor="middle" font-size="19">Discover</text><text class="sb" x="145" y="130.0" text-anchor="middle" font-size="12">diverge</text><text class="st" x="355" y="104.0" text-anchor="middle" font-size="19">Define</text><text class="sb" x="355" y="130.0" text-anchor="middle" font-size="12">converge</text><text class="st" x="645" y="104.0" text-anchor="middle" font-size="19">Design</text><text class="sb" x="645" y="130.0" text-anchor="middle" font-size="12">diverge</text><text class="st" x="855" y="104.0" text-anchor="middle" font-size="19">Deliver</text><text class="sb" x="855" y="130.0" text-anchor="middle" font-size="12">converge</text><circle class="nd n0" cx="0" cy="110.0" r="7"/><circle class="nd n1" cx="500.0" cy="110.0" r="7"/><circle class="nd n2" cx="1000" cy="110.0" r="7"/><text class="nl" x="4" y="210" text-anchor="start" font-size="12">Brief</text><text class="nl" x="500.0" y="210" text-anchor="middle" font-size="12">Defined problem</text><text class="nl" x="996" y="210" text-anchor="end" font-size="12">Outcome</text></svg><svg class="dd2 dd-narrow" viewBox="0 0 400 260" role="img" aria-label="Double diamond: discover and define the problem, then design and deliver the solution" xmlns="http://www.w3.org/2000/svg"><path class="dz p1" d="M0 120.0 L100.0 34 L200.0 120.0 L100.0 206 Z"/><path class="dz p2" d="M200.0 120.0 L300.0 34 L400.0 120.0 L300.0 206 Z"/><path class="dv" d="M100.0 34V206M300.0 34V206"/><path class="ax" d="M0 120.0H400"/><text class="sp" x="100.0" y="20" text-anchor="middle" font-size="12">PROBLEM SPACE</text><text class="sp" x="300.0" y="20" text-anchor="middle" font-size="12">SOLUTION SPACE</text><text class="st" x="58" y="114.0" text-anchor="middle" font-size="17">Discover</text><text class="sb" x="58" y="140.0" text-anchor="middle" font-size="12">diverge</text><text class="st" x="142" y="114.0" text-anchor="middle" font-size="17">Define</text><text class="sb" x="142" y="140.0" text-anchor="middle" font-size="12">converge</text><text class="st" x="258" y="114.0" text-anchor="middle" font-size="17">Design</text><text class="sb" x="258" y="140.0" text-anchor="middle" font-size="12">diverge</text><text class="st" x="342" y="114.0" text-anchor="middle" font-size="17">Deliver</text><text class="sb" x="342" y="140.0" text-anchor="middle" font-size="12">converge</text><circle class="nd n0" cx="0" cy="120.0" r="7"/><circle class="nd n1" cx="200.0" cy="120.0" r="7"/><circle class="nd n2" cx="400" cy="120.0" r="7"/><text class="nl" x="4" y="230" text-anchor="start" font-size="12">Brief</text><text class="nl" x="200.0" y="230" text-anchor="middle" font-size="12">Defined problem</text><text class="nl" x="396" y="230" text-anchor="end" font-size="12">Outcome</text></svg>
     <ol class="steps">
       <li><h3>Discover</h3><p>Stakeholder research · Current-state mapping</p></li>
       <li><h3>Define</h3><p>Problem statement · Scope · Success metrics</p></li>
