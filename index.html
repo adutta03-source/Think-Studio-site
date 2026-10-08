@@ -2,9 +2,9 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Think Studio is a design and research studio in Delhi: product and systems design, data visualisation, visual communication, research and evaluation, and workshops.">
+<meta name="description" content="Think Studio is a design, systems and strategy consultancy in Delhi: product, space, interaction, systems and policy design, strategic consultancy, and cognitive services from design thinking to metacognition, capacity building and fellowships.">
 <meta property="og:title" content="Think Studio">
-<meta property="og:description" content="A design and research studio in Delhi, part of Unfolded Future.">
+<meta property="og:description" content="A design, systems and strategy consultancy in Delhi, part of Unfolded Future.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thinkstudio.unfoldedfuture.com/">
 <link rel="canonical" href="https://thinkstudio.unfoldedfuture.com/">
@@ -61,12 +61,19 @@ p{margin:0}
 .head h2{font-size:clamp(2rem,4.4vw,3.3rem)}
 .head p{color:var(--muted);max-width:36em;margin-top:6px}
 
-.services{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
-.services li{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:4px 16px;padding-block:26px;border-top:1px solid var(--line)}
-.services span{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--accent);padding-top:.25rem}
-.services h3{font-size:1.5rem;margin-bottom:8px}
-.services p{grid-column:2;color:var(--muted);font-size:.96rem}
 
+.practice{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:20px 56px;margin-top:56px;padding-top:32px;border-top:3px solid var(--ink)}
+.tag{display:inline-block;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:var(--mark);color:var(--mark-ink);padding:4px 10px}
+.ph h3{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:16px}
+.ph p{color:var(--muted);margin-top:12px;max-width:26em}
+.caps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+.caps li{padding-block:18px;border-bottom:1px solid var(--line)}
+.caps h4{font-family:var(--display);font-weight:500;font-size:1.25rem;letter-spacing:-.015em;margin:0 0 6px}
+.caps p{color:var(--muted);font-size:.94rem}
+.sectors{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 40px}
+.sectors li{border-top:1px solid var(--ink);padding-top:18px}
+.sectors h3{font-size:1.45rem;margin-bottom:8px}
+.sectors p{color:var(--muted);font-size:.95rem}
 .steps{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s}
 .steps li{counter-increment:s;padding-top:18px;border-top:3px solid var(--ink)}
 .steps li::before{content:"0" counter(s);display:block;font-family:var(--display);font-weight:700;font-size:.9rem;color:var(--accent);margin-bottom:10px}
@@ -96,7 +103,8 @@ p{margin:0}
 @media (max-width:820px){
   .nav ul{display:none}
   .hero,.head,.why .wrap,.people{grid-template-columns:minmax(0,1fr)}
-  .services{grid-template-columns:minmax(0,1fr)}
+  .practice,.sectors{grid-template-columns:minmax(0,1fr)}
+  .caps{grid-template-columns:minmax(0,1fr)}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:440px){.steps{grid-template-columns:minmax(0,1fr)}}
@@ -108,7 +116,8 @@ p{margin:0}
     <nav class="nav" aria-label="Main">
       <a class="brand" href="#top" id="top"><i aria-hidden="true"></i>Think Studio</a>
       <ul>
-        <li><a href="#services">Services</a></li>
+        <li><a href="#practices">Practices</a></li>
+        <li><a href="#clients">Who we work with</a></li>
         <li><a href="#process">How we work</a></li>
         <li><a href="#people">People</a></li>
       </ul>
@@ -116,36 +125,75 @@ p{margin:0}
     </nav>
     <div class="hero">
       <div>
-        <span class="note">Design and research studio · Delhi</span>
+        <span class="note">Design, systems and strategy consultancy · Delhi</span>
         <h1>Design that starts with <span class="hl">thinking</span> it through.</h1>
-        <p>Think Studio helps organisations understand people and systems, then design what they need: products, programmes, information and communication. We are a small studio run by design faculty and researchers.</p>
+        <p>Think Studio is a consultancy for organisations that want to change how things work. We design products, spaces, systems and policies, and we build the thinking skills that let teams keep improving them after we leave.</p>
         <div class="cta">
           <a class="btn" href="#contact">Start a project</a>
-          <a class="btn" href="#services">See what we do</a>
+          <a class="btn" href="#practices">Our practices</a>
         </div>
       </div>
       <aside class="margin">
-        <p><b>Part of Unfolded Future</b>Our studio work funds Drishta, our community programme on metacognition.</p>
+        <p><b>Part of Unfolded Future</b>Our consultancy work also funds Drishta, our community programme on metacognition.</p>
       </aside>
     </div>
   </div>
 </header>
 
 <main class="wrap">
-  <section class="sec" id="services">
+  <section class="sec" id="practices">
     <div class="head">
-      <div><span class="note">Services</span></div>
+      <div><span class="note">Practices</span></div>
       <div>
-        <h2>What we can help with.</h2>
-        <p>Each project gets both founders' attention, from the first conversation to the final file.</p>
+        <h2>Two practices, one way of thinking.</h2>
+        <p>Our design practice shapes what an organisation makes and how it runs. Our cognitive practice shapes how its people think. Many engagements draw on both.</p>
       </div>
     </div>
-    <ul class="services">
-      <li><span>A</span><div><h3>Product and systems design</h3></div><p>Physical products, services and the systems around them, designed for the people who use and maintain them.</p></li>
-      <li><span>B</span><div><h3>Data visualisation</h3></div><p>Charts, dashboards and reports that make complex information clear to the people who have to act on it.</p></li>
-      <li><span>C</span><div><h3>Visual communication</h3></div><p>Brand identities, posters, social media and campaign material with a consistent visual voice.</p></li>
-      <li><span>D</span><div><h3>Research and evaluation</h3></div><p>Field research, programme monitoring and evaluation, grounded in experience of policy work in government.</p></li>
-      <li><span>E</span><div><h3>Workshops and training</h3></div><p>Design thinking and creative-skills workshops for teams, students and institutions.</p></li>
+
+    <div class="practice">
+      <div class="ph">
+        <span class="tag">Design services</span>
+        <h3>Design, systems and strategy</h3>
+        <p>For organisations that need something designed, rebuilt or set on a new course.</p>
+      </div>
+      <ul class="caps">
+          <li><h4>Product design</h4><p>Physical and digital products, from user research and concept to production-ready design.</p></li>
+          <li><h4>Space design</h4><p>Interiors, exhibitions and learning environments planned around how people move, work and gather.</p></li>
+          <li><h4>Interaction design</h4><p>Digital services, apps and interfaces that are clear to use and practical to maintain.</p></li>
+          <li><h4>Systems design</h4><p>Services and infrastructure mapped end to end, so that improving one part does not break another.</p></li>
+          <li><h4>Policy design</h4><p>Policies and public programmes shaped with the people they serve, with monitoring and evaluation built in.</p></li>
+          <li><h4>Strategic consultancy</h4><p>Direction, programme design and roadmaps for leadership teams facing complex decisions.</p></li>
+      </ul>
+    </div>
+
+    <div class="practice">
+      <div class="ph">
+        <span class="tag">Cognitive services</span>
+        <h3>Thinking, behaviour and learning</h3>
+        <p>For teams and institutions that want people to think more clearly, work better together and keep learning.</p>
+      </div>
+      <ul class="caps">
+          <li><h4>Design thinking</h4><p>Hands-on methods for teams to frame problems well and test ideas quickly.</p></li>
+          <li><h4>Systems thinking</h4><p>Tools for seeing causes, feedback loops and leverage points in complex situations.</p></li>
+          <li><h4>Psychology and human behaviour</h4><p>Behavioural insight applied to products, policies and the way organisations work.</p></li>
+          <li><h4>Metacognition</h4><p>Training people to notice how they think and decide, and to stay steady under pressure.</p></li>
+          <li><h4>Mentoring</h4><p>One-to-one guidance for founders, leaders and early-career practitioners.</p></li>
+          <li><h4>Corporate capacity building</h4><p>Programmes that build lasting skills across teams, not one-off sessions.</p></li>
+          <li><h4>Educational workshops and retreats</h4><p>For schools, universities and organisations, in the classroom or in residence.</p></li>
+          <li><h4>Fellowships</h4><p>Structured programmes that support emerging practitioners over months, not days.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="clients">
+    <div class="head">
+      <div><span class="note">Who we work with</span></div>
+      <div><h2>Built for three kinds of organisation.</h2></div>
+    </div>
+    <ul class="sectors">
+      <li><h3>Government and public institutions</h3><p>Policy and programme design, systems design, and monitoring and evaluation.</p></li>
+      <li><h3>Companies</h3><p>Product, space and interaction design, strategy, and capacity building for teams.</p></li>
+      <li><h3>Education</h3><p>Workshops, retreats, mentoring and fellowships for schools, universities and their students.</p></li>
     </ul>
   </section>
 
@@ -169,11 +217,11 @@ p{margin:0}
 <section class="why">
   <div class="wrap">
     <div>
-      <span class="note">Why work with us</span>
+      <span class="note">Part of Unfolded Future</span>
       <h2>Your project keeps a <span class="hl">community</span> going.</h2>
     </div>
     <div>
-      <p>Think Studio is part of Unfolded Future. What the studio earns sustains Drishta, our programme of gatherings and retreats that help people witness and steady their own minds. <a href="https://drishta.unfoldedfuture.com">Visit Drishta</a></p>
+      <p>Think Studio is the consultancy arm of Unfolded Future. What it earns also sustains Drishta, our programme of gatherings and retreats that help people witness and steady their own minds. <a href="https://drishta.unfoldedfuture.com">Visit Drishta</a></p>
     </div>
   </div>
 </section>
@@ -208,7 +256,7 @@ p{margin:0}
   </section>
 
   <footer class="foot">
-    <span>Think Studio · An Unfolded Future studio</span>
+    <span>Think Studio · An Unfolded Future consultancy</span>
     <span>Delhi · Assam</span>
   </footer>
 </div>
