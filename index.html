@@ -151,6 +151,23 @@ p{margin:0}
 .method p,.checks{color:#c3c8c2;font-size:.92rem}
 .checks{margin:0;padding-left:1.2em;display:grid;gap:8px}
 .checks b{color:var(--on-block);font-weight:600}
+.study2{margin-top:72px;padding-top:56px;border-top:1px solid var(--line)}
+.gchart{display:grid;gap:18px;margin-top:20px}
+.grow{display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:12px;align-items:start}
+.grow>b{font-family:var(--display);font-weight:500;font-size:1.1rem;padding-top:2px}
+.gbars{display:grid;gap:5px}
+.gl{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;min-height:16px;min-width:0}
+.gb{display:block;height:14px;border-radius:0 4px 4px 0;flex:none;position:relative;max-width:100%}
+.gv{font-size:.8rem;font-variant-numeric:tabular-nums}
+.gv.muted{color:var(--muted);font-style:italic}
+.k1{background:var(--accent)}.k2{background:var(--mark)}.k3{background:var(--ink)}
+.sw{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:middle;margin-right:6px}
+.plan{min-width:0}
+.plan td{font-size:.82rem;text-align:left;vertical-align:top}
+.plan thead th{text-align:left}
+.rhythm{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px;font-size:.86rem;color:var(--muted)}
+.rhythm b{display:inline-block;min-width:6.5em;color:var(--ink);font-weight:600}
+.finding.wide{margin-top:28px;max-width:52em}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .steps{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s}
 .steps li{counter-increment:s;padding-top:18px;border-top:3px solid var(--ink)}
@@ -379,6 +396,60 @@ p{margin:0}
         <p>These scores were given afterwards by one rater, from published and edited essays, with no before measure. They show how the framework reads evidence, not a proven effect. The full protocol runs from Drishta's October 2026 gathering and Think Studio's next university cohort, with a comparison group.</p>
       </div>
     </div>
+
+    <article class="study2" id="bootcamp">
+      <div class="head">
+        <div><span class="note">Selected work · Programme design</span></div>
+        <div>
+          <h2>A three-week design bootcamp, run twice.</h2>
+          <p>An intensive introduction to design for school students and first-year undergraduates from any discipline, run by DTU's Department of Design with Tetrix, its student design society.</p>
+        </div>
+      </div>
+
+      <dl class="facts">
+        <div><dt>Setting</dt><dd>Department of Design, Delhi Technological University, with Tetrix, the design community</dd></div>
+        <div><dt>Role</dt><dd>Dr Partha Pratim Das, faculty coordinator for the bootcamp and for Tetrix</dd></div>
+        <div><dt>Editions</dt><dd>30 June to 21 July 2025 · 6 to 27 July 2026</dd></div>
+      </dl>
+
+      <ul class="tiles" aria-label="Key figures">
+        <li><b>2,086+</b><span>registrations across two editions, from across India</span></li>
+        <li><b>About 6 <i>:</i> 1</b><span>applicants for every one of the 360 places</span></li>
+        <li><b>88%</b><span>of 2025 participants completed the full three weeks (158 of 180)</span></li>
+        <li><b>18</b><span>industry speaker sessions, nine in each edition</span></li>
+      </ul>
+
+      <div class="charts">
+        <figure class="chart">
+          <figcaption><h3>Demand, places and completion</h3><p>Registrations and places per edition. The 2026 report does not give a completion count.</p></figcaption>
+          <div class="gchart"><div class="grow"><b>2025</b><div class="gbars">
+      <div class="gl"><span class="gb k1" style="width:89.6%" data-tip="2025: 986+ registrations" tabindex="0"></span><span class="gv">986+ registered</span></div>
+      <div class="gl"><span class="gb k2" style="width:16.4%" data-tip="2025: 180 places" tabindex="0"></span><span class="gv">180 places</span></div>
+      <div class="gl"><span class="gb k3" style="width:14.4%" data-tip="2025: 158 completed" tabindex="0"></span><span class="gv">158 completed</span></div></div></div><div class="grow"><b>2026</b><div class="gbars">
+      <div class="gl"><span class="gb k1" style="width:100.0%" data-tip="2026: 1,100+ registrations" tabindex="0"></span><span class="gv">1,100+ registered</span></div>
+      <div class="gl"><span class="gb k2" style="width:16.4%" data-tip="2026: 180 places" tabindex="0"></span><span class="gv">180 places</span></div>
+      <div class="gl"><span class="gv muted">completions not reported</span></div></div></div></div>
+          <p class="key"><span><i class="sw k1"></i>Registered</span><span><i class="sw k2"></i>Places</span><span><i class="sw k3"></i>Completed</span></p>
+        </figure>
+
+        <figure class="chart">
+          <figcaption><h3>How the three weeks run (2026)</h3><p>Three parallel tracks of 60 participants, each with its own mentor.</p></figcaption>
+          <div class="scroll">
+            <table class="wt plan">
+              <thead><tr><th scope="col"><span class="vh">Track</span></th><th scope="col">Week 1</th><th scope="col">Week 2</th><th scope="col">Week 3</th></tr></thead>
+              <tbody><tr><th scope="row">UX design</th><td>Basics of user experience</td><td>Service design</td><td>System design for enterprise</td></tr><tr><th scope="row">Visual design</th><td>Visual thinking</td><td>Motion graphics</td><td>Production and sound design</td></tr><tr><th scope="row">Product design</th><td>Product fundamentals</td><td>Prototyping</td><td>From prototype to product</td></tr></tbody>
+            </table>
+          </div>
+          <ul class="rhythm">
+            <li><b>Mon to Thu</b>Mentor sessions, each paired with a hands-on task</li>
+            <li><b>Friday</b>An industry speaker for each track</li>
+            <li><b>Final day</b>Team jury and public exhibition</li>
+          </ul>
+        </figure>
+      </div>
+
+      <p class="finding wide"><b>What comes next.</b> The bootcamp records demand, attendance and finished projects, but not how participants' thinking changed. With 180 participants, adding our Metacognition Impact Framework to the next edition would give the first large, before-and-after measure of a design programme of this kind.</p>
+    </article>
   </section>
 
   <section class="sec" id="process">
