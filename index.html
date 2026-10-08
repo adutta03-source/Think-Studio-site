@@ -168,6 +168,18 @@ p{margin:0}
 .rhythm{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px;font-size:.86rem;color:var(--muted)}
 .rhythm b{display:inline-block;min-width:6.5em;color:var(--ink);font-weight:600}
 .finding.wide{margin-top:28px;max-width:52em}
+.edition{display:grid;grid-template-columns:minmax(0,.35fr) minmax(0,1.65fr);gap:20px 48px;margin-top:40px;padding-top:24px;border-top:3px solid var(--ink)}
+.ed-year span{display:block;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.ed-year b{display:block;font-family:var(--display);font-weight:500;font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;letter-spacing:-.03em;margin-top:8px}
+.ed-year small{display:block;color:var(--muted);font-size:.85rem;margin-top:6px}
+.ed-stats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ed-stats li{background:var(--block);color:#c3c8c2;padding:14px 16px;font-size:.82rem}
+.ed-stats b{display:block;font-family:var(--display);font-weight:500;font-size:1.7rem;color:var(--on-block);line-height:1.1;font-variant-numeric:tabular-nums}
+.ed-points{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
+.ed-points li{padding-left:18px;position:relative;color:var(--muted);font-size:.95rem}
+.ed-points li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;background:var(--mark)}
+.ed-points b{color:var(--ink);font-weight:600}
+.ed-close{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;margin-top:48px;align-items:start}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .steps{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s}
 .steps li{counter-increment:s;padding-top:18px;border-top:3px solid var(--ink)}
@@ -198,7 +210,8 @@ p{margin:0}
 @media (max-width:820px){
   .nav ul{display:none}
   .hero,.head,.why .wrap,.people{grid-template-columns:minmax(0,1fr)}
-  .practice,.sectors,.cats,.facts,.mif,.charts,.when,.method{grid-template-columns:minmax(0,1fr)}
+  .practice,.sectors,.cats,.facts,.mif,.charts,.when,.method,.edition,.ed-close{grid-template-columns:minmax(0,1fr)}
+  .ed-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .tiles,.shifts ol,.abilities{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -399,29 +412,52 @@ p{margin:0}
 
     <article class="study2" id="bootcamp">
       <div class="head">
-        <div><span class="note">Selected work · Programme design</span></div>
+        <div><span class="note">Selected work · Workshops</span></div>
         <div>
-          <h2>A three-week design bootcamp, run twice.</h2>
-          <p>An intensive introduction to design for school students and first-year undergraduates from any discipline, run by DTU's Department of Design with Tetrix, its student design society.</p>
+          <h2>Design Bootcamps</h2>
+          <p>A three-week immersion that gives beginners a working foundation in design. Led by Dr Partha Pratim Das as faculty coordinator, Department of Design, Delhi Technological University, with the department's design society, Tetrix.</p>
         </div>
       </div>
 
-      <dl class="facts">
-        <div><dt>Setting</dt><dd>Department of Design, Delhi Technological University, with Tetrix, the design community</dd></div>
-        <div><dt>Role</dt><dd>Dr Partha Pratim Das, faculty coordinator for the bootcamp and for Tetrix</dd></div>
-        <div><dt>Editions</dt><dd>30 June to 21 July 2025 · 6 to 27 July 2026</dd></div>
-      </dl>
+      <div class="edition">
+        <div class="ed-year"><span>Edition 1</span><b>2025</b><small>30 June to 21 July</small></div>
+        <div class="ed-body">
+          <ul class="ed-stats"><li><b>986+</b>registrations</li><li><b>180</b>selected</li><li><b>158</b>completed (88%)</li><li><b>9</b>industry sessions</li></ul>
+          <ul class="ed-points">
+            <li><b>Format.</b> Three parallel tracks of 60: UX, visual and product design.</li>
+            <li><b>Method.</b> Mentor-led sessions four days a week, each tied to a hands-on task; an industry practitioner every Friday.</li>
+            <li><b>Audience.</b> School students and first-year undergraduates from any discipline, selected from applicants across India.</li>
+            <li><b>Outcome.</b> Every graduating participant presented a finished project and portfolio at a public exhibition.</li>
+          </ul>
+        </div>
+      </div>
 
-      <ul class="tiles" aria-label="Key figures">
-        <li><b>2,086+</b><span>registrations across two editions, from across India</span></li>
-        <li><b>About 6 <i>:</i> 1</b><span>applicants for every one of the 360 places</span></li>
-        <li><b>88%</b><span>of 2025 participants completed the full three weeks (158 of 180)</span></li>
-        <li><b>18</b><span>industry speaker sessions, nine in each edition</span></li>
-      </ul>
+      <div class="edition">
+        <div class="ed-year"><span>Edition 2</span><b>2026</b><small>6 to 27 July</small></div>
+        <div class="ed-body">
+          <ul class="ed-stats"><li><b>1,100+</b>registrations</li><li><b>180</b>selected</li><li><b>3 × 3</b>tracks by weeks</li><li><b>9</b>industry sessions</li></ul>
+          <ul class="ed-points">
+            <li><b>Deeper curriculum.</b> Each track moved from basics to advanced practice: service and system design in UX, motion and sound in visual design, prototyping and manufacture in product design.</li>
+            <li><b>Real-world exposure.</b> A first industrial visit to a manufacturing plant, product teardowns and 3D printing.</li>
+            <li><b>New tools.</b> AI-assisted rapid prototyping and pitching through storytelling.</li>
+            <li><b>Professional review.</b> Teams defended their work before an expert jury, as at a design convention.</li>
+          </ul>
+        </div>
+      </div>
 
-      <div class="charts">
+      <div class="ed-close">
+        <div>
+          <span class="tag">Conclusion and insight</span>
+          <ul class="ed-points">
+            <li><b>Proven demand.</b> Over 2,000 applications in two years for 360 places, about six for every seat, with registrations up 12% in the second year.</li>
+            <li><b>A repeatable model.</b> The same structure ran twice at full scale, and the second edition went deeper rather than wider.</li>
+            <li><b>High commitment.</b> 88% of the first cohort completed all three weeks.</li>
+            <li><b>The next step.</b> The bootcamp measures participation and output. Adding our Metacognition Impact Framework would show how participants' thinking changes, across 180 people.</li>
+            <li><b>For clients.</b> Think Studio offers this format, adapted and measured, to universities, schools and companies.</li>
+          </ul>
+        </div>
         <figure class="chart">
-          <figcaption><h3>Demand, places and completion</h3><p>Registrations and places per edition. The 2026 report does not give a completion count.</p></figcaption>
+          <figcaption><h3>Demand, places and completion</h3><p>Registrations and places per edition.</p></figcaption>
           <div class="gchart"><div class="grow"><b>2025</b><div class="gbars">
       <div class="gl"><span class="gb k1" style="width:89.6%" data-tip="2025: 986+ registrations" tabindex="0"></span><span class="gv">986+ registered</span></div>
       <div class="gl"><span class="gb k2" style="width:16.4%" data-tip="2025: 180 places" tabindex="0"></span><span class="gv">180 places</span></div>
@@ -431,24 +467,7 @@ p{margin:0}
       <div class="gl"><span class="gv muted">completions not reported</span></div></div></div></div>
           <p class="key"><span><i class="sw k1"></i>Registered</span><span><i class="sw k2"></i>Places</span><span><i class="sw k3"></i>Completed</span></p>
         </figure>
-
-        <figure class="chart">
-          <figcaption><h3>How the three weeks run (2026)</h3><p>Three parallel tracks of 60 participants, each with its own mentor.</p></figcaption>
-          <div class="scroll">
-            <table class="wt plan">
-              <thead><tr><th scope="col"><span class="vh">Track</span></th><th scope="col">Week 1</th><th scope="col">Week 2</th><th scope="col">Week 3</th></tr></thead>
-              <tbody><tr><th scope="row">UX design</th><td>Basics of user experience</td><td>Service design</td><td>System design for enterprise</td></tr><tr><th scope="row">Visual design</th><td>Visual thinking</td><td>Motion graphics</td><td>Production and sound design</td></tr><tr><th scope="row">Product design</th><td>Product fundamentals</td><td>Prototyping</td><td>From prototype to product</td></tr></tbody>
-            </table>
-          </div>
-          <ul class="rhythm">
-            <li><b>Mon to Thu</b>Mentor sessions, each paired with a hands-on task</li>
-            <li><b>Friday</b>An industry speaker for each track</li>
-            <li><b>Final day</b>Team jury and public exhibition</li>
-          </ul>
-        </figure>
       </div>
-
-      <p class="finding wide"><b>What comes next.</b> The bootcamp records demand, attendance and finished projects, but not how participants' thinking changed. With 180 participants, adding our Metacognition Impact Framework to the next edition would give the first large, before-and-after measure of a design programme of this kind.</p>
     </article>
   </section>
 
