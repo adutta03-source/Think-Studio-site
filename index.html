@@ -16,16 +16,16 @@
 /* Layout: a designer's dot-grid notebook. Big type set on the grid, ochre highlighter marking what matters, margin notes in small caps. */
 :root{
   --paper:#f6f5ef; --dot:#d6d6cb; --ink:#141a17; --muted:#545c56; --line:#d9d8cc;
-  --mark:#efc55e; --mark-ink:#141a17; --accent:#1d4a3f; --block:#141a17; --on-block:#f6f5ef;
+  --mark:#efc55e; --mark-text:#a8822a; --mark-ink:#141a17; --accent:#1d4a3f; --block:#141a17; --on-block:#f6f5ef;
   --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
   --body:"Figtree","Avenir Next","Segoe UI",system-ui,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#121614; --dot:#2a302c; --ink:#f0efe7; --muted:#a7aea8; --line:#2b322e;
-  --mark:#c9a040; --accent:#9fcbaa; --block:#1d2420; color-scheme:dark}}
+  --mark:#c9a040; --mark-text:#d9ad4a; --accent:#9fcbaa; --block:#1d2420; color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#121614; --dot:#2a302c; --ink:#f0efe7; --muted:#a7aea8; --line:#2b322e;
-  --mark:#c9a040; --accent:#9fcbaa; --block:#1d2420; color-scheme:dark}
+  --mark:#c9a040; --mark-text:#d9ad4a; --accent:#9fcbaa; --block:#1d2420; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -54,7 +54,7 @@ p{margin:0}
 
 .hero{display:block;padding-block:clamp(56px,10vw,136px) clamp(48px,7vw,88px)}
 .hero h1{font-size:clamp(2.9rem,8.6vw,6.6rem);font-weight:500;line-height:.98;letter-spacing:-.045em;margin-top:22px}
-.hero h1 .soft{color:var(--muted)}
+.hero h1 .soft{color:var(--mark-text)}
 .hero p{max-width:30em;margin-top:28px;font-size:clamp(1.08rem,1.5vw,1.25rem);line-height:1.55;color:var(--muted)}
 .hero .cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:36px}
 .tlink{font-family:var(--display);font-weight:500;font-size:1rem;text-decoration:none;color:var(--ink);padding-bottom:3px;border-bottom:1.5px solid var(--mark)}
