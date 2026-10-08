@@ -29,7 +29,7 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.03rem;line-height:1.65}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65}
 a{color:inherit}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;letter-spacing:-.025em;margin:0;text-wrap:balance}
@@ -41,24 +41,28 @@ p{margin:0}
 .grid{background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:24px 24px;background-position:11px 11px}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:24px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:1.18rem;letter-spacing:-.02em}
-.brand i{display:block;width:14px;height:14px;background:var(--mark);border:2px solid var(--ink)}
+.brand i{display:block;width:18px;height:18px;background:var(--mark);border:2.5px solid var(--ink);flex:none}
+.brand span{font-weight:500}
+.brand b{font-weight:700}
 .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:.92rem;font-weight:500}
 .nav ul a{text-decoration:none;color:var(--muted)}
 .nav ul a:hover{color:var(--ink)}
 .btn{display:inline-block;font-family:var(--display);font-weight:500;font-size:.95rem;text-decoration:none;padding:11px 20px;border:1.5px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;transition:background .2s,color .2s}
 .btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:transparent;color:var(--ink)}
 
 .hero{padding-block:clamp(40px,7vw,96px) clamp(56px,8vw,112px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,220px);gap:32px 56px;align-items:end}
-.hero h1{font-size:clamp(2.9rem,8vw,6.6rem);font-weight:500;margin-top:18px}
-.hero p{max-width:34em;margin-top:28px;font-size:1.12rem;color:var(--muted)}
+.hero h1{font-size:clamp(2.5rem,7vw,5.6rem);font-weight:500;margin-top:18px;letter-spacing:-.03em}
+.hero p{max-width:32em;margin-top:24px;font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--muted)}
 .hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.margin{border-left:1.5px solid var(--ink);padding-left:18px;font-size:.9rem;color:var(--muted)}
-.margin b{display:block;font-family:var(--display);font-weight:500;font-size:1.05rem;color:var(--ink);margin-bottom:4px}
+.margin{border-left:2px solid var(--mark);padding-left:16px;font-size:.88rem;color:var(--muted);max-width:16em}
+.margin b{display:block;font-family:var(--display);font-weight:500;font-size:.95rem;color:var(--ink);margin-bottom:4px}
 .margin p+p{margin-top:14px}
 
 .sec{padding-block:clamp(56px,7vw,96px);border-top:1px solid var(--line)}
 .head{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:16px 56px;align-items:start}
-.head h2{font-size:clamp(2rem,4.4vw,3.3rem)}
+.head h2{font-size:clamp(1.9rem,3.8vw,3rem)}
 .head p{color:var(--muted);max-width:36em;margin-top:6px}
 
 
@@ -69,13 +73,13 @@ p{margin:0}
 .cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px}
 .cat{border-top:1px solid var(--line);padding-top:18px}
 .cat h4{font-family:var(--display);font-weight:500;font-size:1.4rem;letter-spacing:-.015em;margin:0 0 8px}
-.cat p{color:var(--muted);font-size:.95rem}
+.cat p{color:var(--muted);font-size:1rem}
 .chips{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .chips li{font-size:.86rem;font-weight:500;padding:6px 12px;border:1px solid var(--ink);border-radius:999px}
 .sectors{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 40px}
 .sectors li{border-top:1px solid var(--ink);padding-top:18px}
 .sectors h3{font-size:1.45rem;margin-bottom:8px}
-.sectors p{color:var(--muted);font-size:.95rem}
+.sectors p{color:var(--muted);font-size:1rem}
 .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 40px;margin:44px 0 0;padding-top:24px;border-top:3px solid var(--ink)}
 .facts dt{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .facts dd{margin:6px 0 0;font-size:.95rem}
@@ -84,7 +88,7 @@ p{margin:0}
 .tiles li{background:var(--block);color:var(--on-block);padding:22px 20px 20px;display:flex;flex-direction:column;gap:10px}
 .tiles b{font-family:var(--display);font-weight:500;font-size:clamp(2rem,3.6vw,2.8rem);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .tiles b i{font-style:normal;color:var(--mark);font-size:.6em}
-.tiles span{font-size:.88rem;color:#c3c8c2;line-height:1.5}
+.tiles span{font-size:.92rem;color:#c3c8c2;line-height:1.5}
 .g1{--g:var(--mark)}.g2{--g:var(--accent)}.g3{--g:var(--ink)}
 .mif{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:28px 56px;margin-top:56px;padding-top:32px;border-top:3px solid var(--ink)}
 .mif-intro h3{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:16px}
@@ -95,12 +99,12 @@ p{margin:0}
 .abilities li{counter-increment:a;border-top:4px solid var(--g);padding-top:12px;display:flex;flex-direction:column;gap:6px}
 .abilities b{font-family:var(--display);font-weight:500;font-size:1.35rem}
 .abilities b::before{content:counter(a) " ";color:var(--muted);font-size:.8em}
-.abilities span{font-size:.9rem;color:var(--ink);line-height:1.45}
+.abilities span{font-size:.96rem;color:var(--ink);line-height:1.45}
 .abilities small{font-size:.74rem;color:var(--muted)}
 .charts{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:24px;margin-top:48px}
 .chart{margin:0;border:1px solid var(--line);padding:24px}
 .chart figcaption h3{font-size:1.35rem}
-.chart figcaption p{color:var(--muted);font-size:.9rem;margin-top:6px}
+.chart figcaption p{color:var(--muted);font-size:.94rem;margin-top:6px}
 .scroll{overflow-x:auto;margin-top:18px}
 .heat{border-collapse:separate;border-spacing:3px;width:100%;min-width:500px;font-size:.82rem}
 .heat thead th{font-weight:500;color:var(--muted);text-align:center;padding-bottom:6px}
@@ -143,7 +147,7 @@ p{margin:0}
 .shifts ol{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 .shifts li{border-top:3px solid var(--mark);padding-top:14px;display:flex;flex-direction:column;gap:8px}
 .shifts b{font-family:var(--display);font-weight:500;font-size:1.1rem;line-height:1.2}
-.shifts q{font-size:.9rem;font-style:italic;color:var(--ink)}
+.shifts q{font-size:.96rem;font-style:italic;color:var(--ink)}
 .shifts li span{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 .src{font-size:.78rem;color:var(--muted);margin-top:14px}
 .method{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 48px;margin-top:44px;padding:26px 28px;background:var(--block);color:var(--on-block)}
@@ -176,21 +180,21 @@ p{margin:0}
 .ed-stats li{background:var(--block);color:#c3c8c2;padding:14px 16px;font-size:.82rem}
 .ed-stats b{display:block;font-family:var(--display);font-weight:500;font-size:1.7rem;color:var(--on-block);line-height:1.1;font-variant-numeric:tabular-nums}
 .ed-points{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
-.ed-points li{padding-left:18px;position:relative;color:var(--muted);font-size:.95rem}
+.ed-points li{padding-left:18px;position:relative;color:var(--muted);font-size:1rem}
 .ed-points li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;background:var(--mark)}
 .ed-points b{color:var(--ink);font-weight:600}
 .ed-close{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;margin-top:48px;align-items:start}
-.ptitle{font-size:.9rem;color:var(--ink);margin-bottom:12px}
+.ptitle{font-size:1rem;color:var(--ink);margin-bottom:14px}
 .person .chips{margin:0 0 14px}
 .creds{list-style:none;margin:0;padding:0;display:grid;gap:7px;border-top:1px solid var(--line);padding-top:12px}
-.creds li{font-size:.86rem;color:var(--muted);padding-left:14px;position:relative;line-height:1.5}
+.creds li{font-size:.95rem;color:var(--muted);padding-left:14px;position:relative;line-height:1.5}
 .creds li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;background:var(--mark)}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .steps{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s}
 .steps li{counter-increment:s;padding-top:18px;border-top:3px solid var(--ink)}
 .steps li::before{content:"0" counter(s);display:block;font-family:var(--display);font-weight:700;font-size:.9rem;color:var(--accent);margin-bottom:10px}
 .steps h3{font-size:1.45rem;margin-bottom:8px}
-.steps p{color:var(--muted);font-size:.94rem}
+.steps p{color:var(--muted);font-size:1rem}
 
 .why{background:var(--block);color:var(--on-block)}
 .why .wrap{padding-block:clamp(56px,7vw,96px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px 64px;align-items:end}
@@ -202,7 +206,7 @@ p{margin:0}
 
 .people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 56px;margin-top:44px}
 .person{border-top:1px solid var(--line);padding-top:22px}
-.person h3{font-size:1.6rem}
+.person h3{font-size:clamp(1.5rem,2.4vw,1.85rem)}
 .person .note{display:block;margin-block:6px 10px}
 .person p{color:var(--muted);font-size:.95rem}
 
@@ -220,14 +224,14 @@ p{margin:0}
   .tiles,.shifts ol,.abilities{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media (max-width:440px){.steps,.tiles,.shifts ol,.abilities{grid-template-columns:minmax(0,1fr)}.heat{min-width:340px}.heat tbody th small{display:none}.heat tbody th{width:22%}.heat thead th{font-size:.7rem}}
+@media (max-width:440px){.steps,.tiles,.shifts ol,.abilities{grid-template-columns:minmax(0,1fr)}.heat{min-width:0;border-spacing:2px}.heat tbody th small{display:none}.heat tbody th{width:18%;font-size:.78rem;white-space:nowrap}.heat thead th{font-size:.64rem}.heat td{height:36px;font-size:.92rem}.wt{min-width:0;font-size:.76rem}.wt th,.wt td{padding:8px 3px}.chart{padding:18px 14px}.hero .cta .btn{flex:1 1 auto;text-align:center}.ed-stats b{font-size:1.4rem}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
 
 <header class="grid">
   <div class="wrap">
     <nav class="nav" aria-label="Main">
-      <a class="brand" href="#top" id="top"><i aria-hidden="true"></i>Think Studio</a>
+      <a class="brand" href="#top" id="top"><i aria-hidden="true"></i><span><b>Think</b> Studio</span></a>
       <ul>
         <li><a href="#practices">Practices</a></li>
         <li><a href="#clients">Who we work with</a></li>
@@ -235,7 +239,7 @@ p{margin:0}
         <li><a href="#process">How we work</a></li>
         <li><a href="#people">People</a></li>
       </ul>
-      <a class="btn" href="#contact">Contact us</a>
+      <a class="btn solid" href="#contact">Contact us</a>
     </nav>
     <div class="hero">
       <div>
@@ -243,7 +247,7 @@ p{margin:0}
         <h1>Design, systems and strategy, grounded in <span class="hl">how people think</span>.</h1>
         <p>Advisory and design for government, corporates and education. Products, spaces, systems and policy, delivered with measurable capability building.</p>
         <div class="cta">
-          <a class="btn" href="#contact">Discuss an engagement</a>
+          <a class="btn solid" href="#contact">Discuss an engagement</a>
           <a class="btn" href="#practices">Our practices</a>
         </div>
       </div>
@@ -515,26 +519,23 @@ p{margin:0}
       <div class="person">
         <h3>Dr Partha Pratim Das</h3>
         <span class="note">Founder</span>
-        <p class="ptitle">Assistant Professor, Department of Design, Delhi Technological University</p>
-        <ul class="chips"><li>Systems design</li><li>Interaction and experience design</li><li>Policy design</li><li>Pedagogy</li><li>Sustainable infrastructure</li></ul>
+        <p class="ptitle">Assistant Professor, Design · DTU</p>
+        <ul class="chips"><li>Systems design</li><li>Interaction design</li><li>Policy design</li><li>Pedagogy</li></ul>
         <ul class="creds">
-          <li>PhD, Systems Design (Sustainable Rural Sanitation), IIT Delhi</li>
-          <li>M.Des, Product Design, IIT Delhi · M.Tech, Environmental Engineering · B.Tech, Civil Engineering</li>
-          <li>Programme Lead, Design Bootcamp, DTU (2025, 2026)</li>
-          <li>Guest Editor, <cite>Design for All</cite>, Vol 21 No 2 (2026)</li>
+          <li>PhD, Systems Design · M.Des, Product Design · IIT Delhi</li>
+          <li>Programme Lead, DTU Design Bootcamp</li>
+          <li>Guest Editor, <cite>Design for All</cite> (2026)</li>
         </ul>
       </div>
       <div class="person">
         <h3>Akanshya Dutta</h3>
         <span class="note">Co-founder</span>
-        <p class="ptitle">Independent Researcher and Consultant · Visiting Faculty, Department of Design, Delhi Technological University</p>
-        <ul class="chips"><li>Policy design</li><li>Monitoring and evaluation</li><li>Systems thinking</li><li>Data visualisation</li><li>Capacity building</li><li>Metacognition</li></ul>
+        <p class="ptitle">Researcher and Consultant · Visiting Faculty, Design · DTU</p>
+        <ul class="chips"><li>Policy design</li><li>Monitoring and evaluation</li><li>Data visualisation</li><li>Metacognition</li></ul>
         <ul class="creds">
-          <li>Policy Monitoring and Evaluation, Chief Minister's Secretariat, Government of Assam (2022–24): 70+ KPIs across 15 multi-sectoral schemes; Policy Monitoring Dashboard; Assam Hydrogen Policy 2024</li>
-          <li>Capacity Building, SIPRD Assam (2020–22): SDG localisation at Panchayat level; Assamese-language training content</li>
-          <li>Visiting Faculty, DTU: Data Visualisation; Current Trends and Social Media</li>
-          <li>M.Tech, Computer Science, ASTU · Futures Thinking Specialisation, Institute for the Future (2025)</li>
-          <li>Founder, Drishta · Developer, Metacognition Impact Framework</li>
+          <li>Policy M&amp;E, CM's Secretariat, Assam · 70+ KPIs, 15 schemes</li>
+          <li>Capacity building, SIPRD Assam · SDG localisation</li>
+          <li>M.Tech, Computer Science · Futures Thinking, IFTF</li>
         </ul>
       </div>
     </div>
