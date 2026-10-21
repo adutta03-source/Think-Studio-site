@@ -73,7 +73,7 @@ p{margin:0}
 .margin p+p{margin-top:14px}
 
 .sec{padding-block:clamp(56px,7vw,96px);border-top:1px solid var(--line)}
-.head{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:16px 56px;align-items:start}
+.head{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:16px 56px;align-items:baseline}
 .head h2{font-size:clamp(1.9rem,3.8vw,3rem)}
 .head p{color:var(--muted);max-width:36em;margin-top:6px}
 
@@ -350,7 +350,6 @@ body{background-color:var(--paper);background-image:linear-gradient(var(--gridm)
 /* figure numbers on every section, like sheets in a drawing set */
 body{counter-reset:fig}
 .sec{counter-increment:fig}
-.head .note::before{content:"Fig. " counter(fig,decimal-leading-zero) " — ";color:var(--muted)}
 .head h2{position:relative}
 /* drafting-tape tags and hairline chips */
 .tag{font-family:var(--mono);font-weight:500;transform:rotate(-1.2deg);box-shadow:0 1px 0 rgba(0,0,0,.08)}
@@ -478,12 +477,6 @@ body{counter-reset:fig}
         <a class="btn solid" href="#contact">Discuss an engagement</a>
         <a class="tlink" href="#practices">Explore our practices <span aria-hidden="true">→</span></a>
       </div>
-      <p class="proof-k">Founders' track record</p>
-      <ul class="proof" aria-label="Founders' track record">
-        <li><b>2,086+</b><span>applicants across two design bootcamps</span></li>
-        <li><b>Village</b><span>level granularity in a World Bank–supported state monitoring system</span></li>
-        <li><b>6</b><span>dimensions in our Metacognition Impact Framework</span></li>
-      </ul>
     </div>
   </div>
 </header>
