@@ -324,7 +324,7 @@ header.hd .wrap{position:relative;z-index:1}
 .k-ring{fill:none;stroke:var(--ink);stroke-width:1;opacity:.5}
 .k-dash{fill:none;stroke:var(--ink);stroke-width:1;stroke-dasharray:2 5;opacity:.6}
 .k-o{fill:none;stroke:var(--ink);stroke-width:1}
-.gl{display:block;width:30px;height:60px;margin-bottom:14px}
+svg.gl{display:block;width:30px;height:60px;margin-bottom:14px}
 .g-ln{fill:none;stroke:var(--ink);stroke-width:1.3}
 .g-o{fill:none;stroke:var(--ink);stroke-width:1.2}
 .g-dot,.g-f{fill:var(--ink)}
@@ -452,6 +452,17 @@ body{counter-reset:fig}
 .hero{background:radial-gradient(52% 48% at 50% 46%,var(--paper) 45%,transparent 78%)}
 .hero h1 .soft{color:var(--mark-text)}
 .why{background-color:#2a2f34}
+/* case figures: band colour, compact */
+.tiles li,.ed-stats li,.method{background:#2a2f34}
+.tiles{gap:12px;margin-top:32px}
+.tiles li{padding:16px 18px 16px;gap:8px}
+.tiles b{font-size:clamp(1.6rem,2.6vw,2.1rem)}
+.tiles span{font-size:.86rem;line-height:1.45}
+.ed-stats li{padding:12px 14px}
+.ed-stats b{font-size:1.45rem}
+.case>.case-body:not(:last-child){padding-bottom:0}
+.case>.facts,.case>.edition{margin-top:32px}
+.case>:last-child{margin-bottom:56px}
 </style>
 
 <div style="position:sticky;top:0;z-index:100;background:#efc55e;color:#141a17;font:600 12px/1.4 Figtree,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:7px 12px">Test site 3 · option 4: Sketchbook · not live · options <a href="https://thinkstudio.unfoldedfuture.com/test3/" style="color:inherit;">1</a> · <a href="https://thinkstudio.unfoldedfuture.com/test3/option-2/" style="color:inherit;">2</a> · <a href="https://thinkstudio.unfoldedfuture.com/test3/option-3/" style="color:inherit;">3</a> · <a href="https://thinkstudio.unfoldedfuture.com/test3/option-4/" style="color:inherit;text-decoration:none;opacity:.55">4</a> · <a href="https://thinkstudio.unfoldedfuture.com/" style="color:inherit">live</a></div>
