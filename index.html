@@ -812,7 +812,7 @@ body{counter-reset:fig}
   var b=document.getElementById('copy'),a=document.getElementById('addr');
   b.addEventListener('click',function(){
     function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy address'},1800)}
-    function sel(){var r=document.createRange();r.selectNodeContents(a);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    function sel(){var r=document.createRange();r.selectNodeContents(a);var s=getSelection();s.removeAllRanges();s.addRange(r);try{if(document.execCommand('copy')){done();return}}catch(e){}b.textContent='Selected: press copy'}
     try{navigator.clipboard.writeText(a.textContent).then(done,sel)}catch(e){sel()}
   });
 })();
