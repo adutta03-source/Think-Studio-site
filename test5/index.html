@@ -884,6 +884,7 @@ body{counter-reset:fig}
   window.addEventListener('hashchange',function(){route(true)});
   mq.addEventListener?mq.addEventListener('change',function(){render(cur)}):mq.addListener(function(){render(cur)});
   route(true);
+  window.addEventListener('load',function(){var h=location.hash.slice(1);if(mq.matches&&groups[h])setTimeout(function(){window.scrollTo(0,0)},0)});
 })();
 </script>
 </html>
