@@ -416,6 +416,38 @@ body{counter-reset:fig}
 .case>.case-body:not(:last-child){padding-bottom:0}
 .case>.facts,.case>.edition{margin-top:32px}
 .case>:last-child{margin-bottom:56px}
+
+/* ===== mobile only: landing with doors, one section per screen ===== */
+@media (min-width:821px){.m-only{display:none!important}}
+@media (max-width:820px){
+  .pnav{display:flex;gap:8px;overflow-x:auto;padding:14px 0 4px;margin:0;list-style:none;scrollbar-width:none}
+  .pnav::-webkit-scrollbar{display:none}
+  .pnav a{display:block;white-space:nowrap;font-size:.86rem;font-weight:500;text-decoration:none;color:var(--ink);padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper)}
+  .pnav a[aria-current]{background:var(--mark);border-color:var(--mark);color:var(--mark-ink)}
+  .k-hero.kdraw{aspect-ratio:540/516;height:auto!important;width:min(78%,300px)!important;margin-bottom:40px!important}
+  .ptop{display:none;padding-block:36px 8px}
+  .ptop a{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+  .ptop h1{font-size:2.5rem;font-weight:500;line-height:1;letter-spacing:-.04em;margin-top:14px}
+  .ptop p{margin-top:14px;color:var(--muted);line-height:1.55}
+  .doors{list-style:none;padding:0;margin:8px 0 56px;display:grid;gap:12px}
+  .doors a{position:relative;display:flex;flex-direction:column;gap:8px;padding:20px 20px 22px;background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;text-decoration:none;color:var(--ink)}
+  .doors a:active{box-shadow:4px 4px 0 var(--mark)}
+  .doors small{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .doors b{font-family:var(--display);font-weight:500;font-size:1.65rem;letter-spacing:-.025em;line-height:1.05;padding-right:28px}
+  .doors span{color:var(--muted);line-height:1.5}
+  .doors i{position:absolute;right:20px;top:18px;font-style:normal;font-size:1.4rem}
+  .nextp{display:none;justify-content:space-between;align-items:baseline;gap:16px;padding-block:26px;border-top:1px solid var(--ink);text-decoration:none;color:var(--ink)}
+  .nextp small{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .nextp b{font-family:var(--display);font-weight:500;font-size:1.6rem;letter-spacing:-.02em}
+  body.mp #practices,body.mp #clients,body.mp #work,body.mp #process,body.mp .why,body.mp #people{display:none}
+  body.mp:not([data-page]) .doors-wrap{display:block}
+  body.mp[data-page] .hero,body.mp[data-page] .doors-wrap{display:none}
+  body.mp[data-page] .ptop{display:block}
+  body.mp[data-page] .nextp{display:flex}
+  body.mp[data-page="practices"] #practices,body.mp[data-page="practices"] #clients,body.mp[data-page="work"] #work,
+  body.mp[data-page="approach"] #process,body.mp[data-page="approach"] .why,body.mp[data-page="people"] #people{display:block}
+  body.mp[data-page] main.wrap>.sec:first-of-type,body.mp[data-page="practices"] #practices,body.mp[data-page="work"] #work,body.mp[data-page="approach"] #process,body.mp[data-page="people"] #people{border-top:0}
+}
 </style>
 
 <header class="hd">
@@ -431,6 +463,8 @@ body{counter-reset:fig}
       </ul>
       <a class="btn solid" href="#contact">Contact us</a>
     </nav>
+    <ul class="pnav m-only"><li><a href="#practices" data-p="practices">What we do</a></li><li><a href="#work" data-p="work">Our work</a></li><li><a href="#approach" data-p="approach">How we work</a></li><li><a href="#people" data-p="people">People</a></li></ul>
+    <div class="ptop m-only"><a href="#top-home">Think Studio /</a><h1></h1><p></p></div>
     <div class="hero">
       <svg class="k-hero kdraw" viewBox="0 0 540 516" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path class="k3-con" d="M26 332A240 240 0 0 1 412 104"/><path class="k3-con" d="M412 104L262 252"/><circle class="k3-pin" cx="412" cy="104" r="3"/><text class="k3-hand" x="330" y="60">r = scope</text><polygon class="k3-side" points="88.8,292.0 262.0,392.0 262.0,414.0 88.8,314.0"/><polygon class="k3-side dk" points="262.0,392.0 435.2,292.0 435.2,314.0 262.0,414.0"/><polygon class="k3-top" points="262.0,192.0 435.2,292.0 262.0,392.0 88.8,292.0"/><path class="k3-th" d="M305.3 217.0L132.1 317.0"/><path class="k3-th" d="M218.7 217.0L391.9 317.0"/><path class="k3-th" d="M348.6 242.0L175.4 342.0"/><path class="k3-th" d="M175.4 242.0L348.6 342.0"/><path class="k3-th" d="M391.9 267.0L218.7 367.0"/><path class="k3-th" d="M132.1 267.0L305.3 367.0"/><path class="k3-lead" d="M88.8 303.0L54.8 287.0H86"/><circle class="k3-pin" cx="88.8" cy="303.0" r="2.4"/><text class="k3-hand" x="24" y="282.0">people</text><polygon class="k3-side" points="88.8,222.0 262.0,322.0 262.0,344.0 88.8,244.0"/><polygon class="k3-side dk" points="262.0,322.0 435.2,222.0 435.2,244.0 262.0,344.0"/><polygon class="k3-top" points="262.0,122.0 435.2,222.0 262.0,322.0 88.8,222.0"/><path class="k3-th" d="M305.3 147.0L132.1 247.0"/><path class="k3-th" d="M218.7 147.0L391.9 247.0"/><path class="k3-th" d="M348.6 172.0L175.4 272.0"/><path class="k3-th" d="M175.4 172.0L348.6 272.0"/><path class="k3-th" d="M391.9 197.0L218.7 297.0"/><path class="k3-th" d="M132.1 197.0L305.3 297.0"/><path class="k3-lead" d="M88.8 233.0L54.8 217.0H86"/><circle class="k3-pin" cx="88.8" cy="233.0" r="2.4"/><text class="k3-hand" x="24" y="212.0">process</text><polygon class="k3-side" points="88.8,152.0 262.0,252.0 262.0,274.0 88.8,174.0"/><polygon class="k3-side dk" points="262.0,252.0 435.2,152.0 435.2,174.0 262.0,274.0"/><polygon class="k3-top hi" points="262.0,52.0 435.2,152.0 262.0,252.0 88.8,152.0"/><path class="k3-th" d="M305.3 77.0L132.1 177.0"/><path class="k3-th" d="M218.7 77.0L391.9 177.0"/><path class="k3-th" d="M348.6 102.0L175.4 202.0"/><path class="k3-th" d="M175.4 102.0L348.6 202.0"/><path class="k3-th" d="M391.9 127.0L218.7 227.0"/><path class="k3-th" d="M132.1 127.0L305.3 227.0"/><path class="k3-lead" d="M88.8 163.0L54.8 147.0H86"/><circle class="k3-pin" cx="88.8" cy="163.0" r="2.4"/><text class="k3-hand" x="24" y="142.0">policy</text><path class="k3-dash" d="M88.8 292.0L88.8 152.0"/><path class="k3-dash" d="M262.0 392.0L262.0 252.0"/><path class="k3-dash" d="M435.2 292.0L435.2 152.0"/><circle class="k3-node" cx="305.3" cy="157.0" r="5"/><path class="k3-link" d="M305.3 157.0L305.3 297.0"/><circle class="k3-node o" cx="305.3" cy="297.0" r="4"/><path class="k3-dim" d="M469.2 152.0V314.0M463.2 158.0l12 -12M463.2 320.0l12 -12M455.2 152.0h22M455.2 314.0h22"/><text class="k3-mono" x="481.2" y="233" transform="rotate(90 481.2 233)" text-anchor="middle">3 LAYERS · 1 SYSTEM</text><ellipse class="k3-red" cx="54" cy="276.0" rx="40" ry="15" transform="rotate(-4 54 276.0)"/><text class="k3-hand red" x="20" y="317.0">start here</text><rect class="k3-box" x="14" y="470" width="104" height="38"/><text class="k3-hand c" x="66.0" y="495" text-anchor="middle">Discover</text><path class="k3-arrow" d="M122 489.0H144M138 484.0l6 5l-6 5"/><rect class="k3-box" x="148" y="470" width="104" height="38"/><text class="k3-hand c" x="200.0" y="495" text-anchor="middle">Define</text><path class="k3-arrow" d="M256 489.0H278M272 484.0l6 5l-6 5"/><rect class="k3-box" x="282" y="470" width="104" height="38"/><text class="k3-hand c" x="334.0" y="495" text-anchor="middle">Design</text><path class="k3-arrow" d="M390 489.0H412M406 484.0l6 5l-6 5"/><rect class="k3-box" x="416" y="470" width="104" height="38"/><text class="k3-hand c" x="468.0" y="495" text-anchor="middle">Deliver</text></svg>
       <span class="note">Design · Systems · Strategy</span>
@@ -443,6 +477,7 @@ body{counter-reset:fig}
     </div>
   </div>
 </header>
+<div class="wrap doors-wrap m-only"><ul class="doors"><li><a href="#practices"><small>01</small><b>What we do</b><span>Design and cognitive services</span><i aria-hidden="true">→</i></a></li><li><a href="#work"><small>02</small><b>Our work</b><span>Selected case studies</span><i aria-hidden="true">→</i></a></li><li><a href="#approach"><small>03</small><b>How we work</b><span>Our engagement model</span><i aria-hidden="true">→</i></a></li><li><a href="#people"><small>04</small><b>People</b><span>The team behind the studio</span><i aria-hidden="true">→</i></a></li></ul></div>
 
 <main class="wrap">
   <section class="sec" id="practices">
@@ -789,6 +824,7 @@ body{counter-reset:fig}
     </div>
   </section>
 
+  <a class="nextp m-only" href="#"><small>Next</small><b></b></a>
   <section class="contact" id="contact">
     <svg class="deco d-arc" viewBox="0 0 600 320"  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path class="ln" d="M220 300 A80 80 0 0 1 380 300"/><path class="ln" d="M170 300 A130 130 0 0 1 430 300"/><path class="ln dash" d="M120 300 A180 180 0 0 1 480 300"/><path class="ln" d="M70 300 A230 230 0 0 1 530 300"/><path class="ln" d="M300 300V40"/><path class="fill" d="M294 44L300 30L306 44Z"/><circle class="acc" cx="300" cy="300" r="8"/><circle class="dot" cx="83.9" cy="221.3" r="2.6"/><circle class="dot" cx="123.8" cy="152.2" r="2.6"/><circle class="dot" cx="185" cy="100.8" r="2.6"/><circle class="dot" cx="260.1" cy="73.5" r="2.6"/><circle class="dot" cx="339.9" cy="73.5" r="2.6"/><circle class="dot" cx="415" cy="100.8" r="2.6"/><circle class="dot" cx="476.2" cy="152.2" r="2.6"/><circle class="dot" cx="516.1" cy="221.3" r="2.6"/></svg>
     <span class="note">Contact</span>
@@ -821,6 +857,33 @@ body{counter-reset:fig}
 (function(){
   function openFromHash(){var id=location.hash.slice(1);var el=id&&document.getElementById(id);if(el&&el.tagName==='DETAILS'){el.open=true;el.scrollIntoView({block:'start'});}}
   window.addEventListener('hashchange',openFromHash);openFromHash();
+})();
+</script>
+<script>
+(function(){
+  var P=[["practices", "What we do", "Two practices, three sectors.", "Design and cognitive services"], ["work", "Our work", "Selected programmes, from design and delivery to evaluation.", "Selected case studies"], ["approach", "How we work", "A four-stage engagement model, and what our work sustains.", "Our engagement model"], ["people", "People", "The founders of Think Studio.", "The team behind the studio"]], mq=matchMedia('(max-width:820px)'), B=document.body, order=P.map(function(x){return x[0]});
+  var groups={practices:['practices','clients'],work:['work'],approach:['process'],people:['people']};
+  function pageFor(id){if(!id)return null;if(groups[id])return id;for(var k in groups){if(groups[k].indexOf(id)>-1)return k}if(id.indexOf('case-')===0)return 'work';return undefined}
+  function render(pg){
+    if(!mq.matches){B.classList.remove('mp');B.removeAttribute('data-page');return}
+    B.classList.add('mp');
+    if(!pg){B.removeAttribute('data-page')}else{B.setAttribute('data-page',pg)}
+    document.querySelectorAll('.pnav a').forEach(function(a){if(a.dataset.p===pg){a.setAttribute('aria-current','page');var u=a.parentNode.parentNode;u.scrollLeft=a.parentNode.offsetLeft-(u.clientWidth-a.offsetWidth)/2}else a.removeAttribute('aria-current')});
+    if(pg){var i=order.indexOf(pg),d=P[i],n=P[(i+1)%P.length];
+      document.querySelector('.ptop h1').textContent=d[1];document.querySelector('.ptop p').textContent=d[2];
+      var nx=document.querySelector('.nextp');nx.href='#'+n[0];nx.querySelector('b').textContent=n[1]+' \u2192';}
+  }
+  var cur=null;
+  function route(scrollTop){var h=location.hash.slice(1);
+    if(h==='contact'||h==='')return render(h===''?null:cur);
+    if(h==='top-home'||h==='top'){cur=null;render(null);window.scrollTo(0,0);return}
+    var pg=pageFor(h);if(pg===undefined)return;cur=pg;render(pg);
+    if(mq.matches&&scrollTop&&groups[h])window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',function(){route(true)});
+  mq.addEventListener?mq.addEventListener('change',function(){render(cur)}):mq.addListener(function(){render(cur)});
+  route(true);
+  window.addEventListener('load',function(){var h=location.hash.slice(1);if(mq.matches&&groups[h])setTimeout(function(){window.scrollTo(0,0)},0)});
 })();
 </script>
 </html>
