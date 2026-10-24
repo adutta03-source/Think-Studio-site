@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Think Studio | Test 6: The tree</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6.5' fill='%23efc55e' stroke='%23141a17' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#f7f6f2; --ink:#111311; --muted:#5b605b; --line:#dcdad2; --mark:#efc55e; --mark-text:#8a6a1f; --panel:#f7f6f2; --tree-filter:none;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Figtree","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --banner:31px; --pad:clamp(18px,3vw,44px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f110f;--ink:#efede6;--muted:#a3a8a2;--line:#2a2e2a;--mark:#d4aa48;--mark-text:#e2b955;--panel:#0f110f;--tree-filter:invert(1) brightness(.9);color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f110f;--ink:#efede6;--muted:#a3a8a2;--line:#2a2e2a;--mark:#d4aa48;--mark-text:#e2b955;--panel:#0f110f;--tree-filter:invert(1) brightness(.9);color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;overflow:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:500;margin:0}
+p{margin:0}
+.banner{position:fixed;top:0;left:0;right:0;height:var(--banner);z-index:50;background:#efc55e;color:#141a17;font:600 12px/var(--banner) var(--body);letter-spacing:.14em;text-transform:uppercase;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 10px}
+.lbl{font:500 .72rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+
+/* bar */
+.bar{position:fixed;top:var(--banner);left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:22px var(--pad);pointer-events:none}
+.bar>*{pointer-events:auto}
+.brand{background:var(--paper);padding:4px 8px 4px 0;display:flex;align-items:center;gap:10px;text-decoration:none;font:500 1.2rem var(--display);letter-spacing:-.02em}
+.brand i{width:15px;height:15px;border-radius:50%;background:var(--mark);border:2.5px solid var(--ink)}
+.navr{display:flex;gap:22px}
+.navr button,.navr a{font:500 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;background:none;border:0;color:var(--ink);cursor:pointer;padding:6px 0;text-decoration:none}
+.navr button::before,.navr a::before{content:"[ "}.navr button::after,.navr a::after{content:" ]"}
+.navr button:hover{color:var(--mark-text)}
+.btn{font:500 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:12px 18px;border:1.5px solid var(--ink);border-radius:0;background:var(--ink);color:var(--paper);cursor:pointer}
+.btn.line{background:transparent;color:var(--ink)}
+.btn.line:hover{background:var(--mark);border-color:var(--mark);color:#111}
+
+/* stage */
+.stage{position:fixed;inset:var(--banner) 0 0 0;overflow:hidden}
+.intro{position:absolute;z-index:5;left:var(--pad);top:clamp(110px,18vh,190px);max-width:min(520px,31vw);transition:opacity .5s,transform .7s}
+.intro .lbl{color:var(--muted)}
+.intro h1{font-size:clamp(2.6rem,4.6vw,4.6rem);line-height:.94;letter-spacing:-.05em;margin-top:18px}
+.intro h1 span{display:block;color:var(--mark-text)}
+.intro p{margin-top:22px;max-width:27em;color:var(--muted);font-size:clamp(1rem,1.2vw,1.12rem)}
+.intro .hint{margin-top:28px;color:var(--ink);font-size:.72rem}
+body.zoomed .intro{opacity:0;transform:translateY(-16px);pointer-events:none}
+
+.tree{position:absolute;transform-origin:0 0;transition:transform 1s cubic-bezier(.7,0,.2,1);will-change:transform}
+.tree img{display:block;width:100%;height:100%;filter:var(--tree-filter);user-select:none;-webkit-user-drag:none;pointer-events:none;transition:opacity .6s}
+body.zoomed .tree img{opacity:.92}
+@media (prefers-reduced-motion:reduce){.tree,.intro,.panel,.spot{transition:none!important}}
+
+.spot{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px;padding:6px 10px;background:var(--paper);color:var(--ink);border:0;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;cursor:pointer;transition:opacity .4s,background .2s}
+.spot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mark);flex:none}
+.spot span::before{content:"[ "}.spot span::after{content:" ]"}
+.spot small{font:inherit;color:var(--mark-text)}
+.spot:hover,.spot:focus-visible{background:var(--ink);color:var(--paper);outline:none}
+.spot.r{transform:translate(-100%,-50%)}.spot.l{transform:translate(0,-50%)}
+body.zoomed .spot{opacity:0;pointer-events:none}
+
+/* panel */
+.panel{position:fixed;z-index:40;top:var(--banner);right:0;bottom:0;width:min(680px,52vw);background:var(--panel);border-left:1px solid var(--ink);transform:translateX(101%);transition:transform .8s cubic-bezier(.7,0,.2,1);display:flex;flex-direction:column}
+body.zoomed .panel{transform:none}
+.panel-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px clamp(22px,3vw,48px)}
+.back{font:500 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;background:none;border:0;color:var(--ink);cursor:pointer;padding:6px 0}
+.back:hover{color:var(--mark-text)}
+.pager{display:flex;gap:18px}
+.pager button{font:500 .74rem var(--mono);letter-spacing:.14em;background:none;border:0;color:var(--ink);cursor:pointer;padding:6px 0}
+.pager button:hover{color:var(--mark-text)}
+.panel-body{overflow-y:auto;padding:clamp(20px,4vh,48px) clamp(22px,3vw,48px) 64px;-webkit-overflow-scrolling:touch}
+.sec[hidden]{display:none}
+.sec .kicker{display:block;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sec h2{font-size:clamp(2.4rem,3.6vw,3.6rem);line-height:.98;letter-spacing:-.045em;margin-top:18px}
+.sec .lede{margin-top:20px;font-size:clamp(1.05rem,1.3vw,1.2rem);line-height:1.5;color:var(--muted);max-width:32em}
+.sec h3{font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:56px}
+.offers{list-style:none;padding:0;margin:40px 0 0;counter-reset:o}
+.offers li{counter-increment:o;display:grid;grid-template-columns:3em minmax(0,1fr);padding:18px 0;border-top:1px solid var(--line)}
+.offers li:last-child{border-bottom:1px solid var(--line)}
+.offers li::before{content:"0" counter(o);font:500 .72rem/2.4 var(--mono);color:var(--mark-text)}
+.offers b{display:block;font:500 clamp(1.25rem,1.7vw,1.5rem)/1.15 var(--display);letter-spacing:-.025em}
+.offers span{grid-column:2;display:block;color:var(--muted);margin-top:6px;font-size:.95rem}
+.case{margin-top:0;padding:28px 0;border-top:1px solid var(--ink)}
+.sec h3+.case{margin-top:16px}
+.lede+.case{margin-top:40px}
+.case small{display:block;font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.case b{display:block;font:500 clamp(1.3rem,1.8vw,1.6rem)/1.12 var(--display);letter-spacing:-.025em;margin-top:10px}
+.case p{margin-top:10px;color:var(--muted);font-size:.98rem;max-width:34em}
+.figs{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:22px}
+.figs div{display:flex;flex-direction:column}
+.figs strong{font:300 clamp(2.4rem,3.6vw,3.4rem)/1 var(--display);letter-spacing:-.05em}
+.figs em{font:500 .66rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.tag{display:inline-block;margin-top:18px;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1.5px solid var(--mark);padding-bottom:3px}
+.person{padding:28px 0;border-top:1px solid var(--ink)}
+.sec h2+.person{margin-top:40px}
+.person b{display:block;font:500 clamp(1.5rem,2vw,1.8rem) var(--display);letter-spacing:-.03em}
+.person small{display:block;font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mark-text);margin-top:8px}
+.person p{margin-top:12px;color:var(--muted)}
+.person ul{margin:12px 0 0;padding:0;list-style:none;color:var(--muted);font-size:.92rem}
+.person li{padding:4px 0}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:40px}
+.mail code{font:500 clamp(1.1rem,1.8vw,1.4rem) var(--display);letter-spacing:-.02em;border-bottom:2px solid var(--mark);padding-bottom:4px}
+.next{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:64px;padding:26px 0 0;border:0;border-top:1px solid var(--ink);background:none;width:100%;color:var(--ink);cursor:pointer;text-align:left}
+.next small{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.next b{font:500 clamp(1.4rem,2vw,1.8rem) var(--display);letter-spacing:-.03em}
+.next:hover b{color:var(--mark-text)}
+
+@media (max-width:820px){
+  .bar{padding:16px 18px}
+  .navr{display:none}
+  .w{display:none}
+  .intro{left:18px;right:18px;top:84px;max-width:none}
+  .intro h1{font-size:2.7rem}
+  .intro p{margin-top:14px}
+  .intro .hint{margin-top:14px}
+  .spot{font-size:.6rem;padding:4px 7px;gap:6px;letter-spacing:.1em}
+  .spot::before{width:6px;height:6px}
+  .spot small{display:none}
+  .panel{top:auto;left:0;width:auto;height:66%;border-left:0;border-top:1px solid var(--ink);transform:translateY(102%)}
+  .panel-top{padding:14px 20px}
+  .panel-body{padding:16px 20px 48px}
+  .sec h2{font-size:2.3rem}
+  .offers{margin-top:28px}
+  .next{margin-top:44px}
+}
+</style>
+</head>
+<body>
+<div class="banner">Test site 6 · the tree · not live · <a href="https://thinkstudio.unfoldedfuture.com/">live site</a></div>
+
+<header class="bar">
+  <a class="brand" href="#" data-home><i aria-hidden="true"></i><span><b>Think</b> Studio</span></a>
+  <nav class="navr" aria-label="Sections"><button type="button" data-go="work">Work</button><button type="button" data-go="people">People</button><button type="button" data-go="roots">Contact</button></nav>
+</header>
+
+<main class="stage" id="stage">
+  <div class="intro">
+    <span class="lbl">Design · Systems · Strategy — Delhi</span>
+    <h1>Better systems.<br><span>Clearer thinking.</span></h1>
+    <p>We design for organisations that serve people: their programmes, their teams, and how they show up in the world.</p>
+    <p class="hint lbl">[ Select a branch to explore ]</p>
+  </div>
+
+  <div class="tree" id="tree" aria-label="Site map drawn as a tree">
+    <img src="tree.webp" alt="Pen-and-ink drawing of a wide old tree by Dr. Partha Pratim Das" width="1886" height="1326">
+    <button class="spot" data-go="programmes" style="left:17%;top:36%"><span>Programmes and people</span></button>
+    <button class="spot" data-go="presence" style="left:84%;top:52%"><span>How you show up</span></button>
+    <button class="spot" data-go="work" style="left:50%;top:17%"><span>Our work</span></button>
+    <button class="spot" data-go="exhibitions" style="left:80%;top:23%"><span>Exhibitions</span><small>· growing</small></button>
+    <button class="spot" data-go="people" style="left:16%;top:73%"><span>People</span></button>
+    <button class="spot" data-go="roots" style="left:62%;top:90%"><span>Roots and contact</span></button>
+  </div>
+</main>
+
+<aside class="panel" id="panel" aria-live="polite">
+  <div class="panel-top">
+    <button class="back" type="button" data-home>[ ← <span class="w">The whole </span>tree ]</button>
+    <div class="pager"><button type="button" data-step="-1" aria-label="Previous branch">[ ←<span class="w"> Prev</span> ]</button><button type="button" data-step="1" aria-label="Next branch">[ <span class="w">Next </span>→ ]</button></div>
+  </div>
+  <div class="panel-body" id="panelBody">
+
+    <section class="sec" id="programmes" hidden>
+      <span class="kicker">Branch · Programmes and people</span>
+      <h2>Programmes that work, and teams that think clearly.</h2>
+      <p class="lede">We help NGOs, foundations and public institutions design and evaluate their programmes, and build the thinking capability of the people who run them.</p>
+      <ul class="offers">
+        <li><b>Programme design and evaluation</b><span>From the first brief to measured outcomes, for public and social programmes.</span></li>
+        <li><b>Capability building</b><span>Workshops and fellowships in design thinking and metacognition, for teams and institutions.</span></li>
+        <li><b>Team retreats</b><span>Immersive retreats for organisations, delivered with <a href="https://drishta.unfoldedfuture.com">Drishta</a>.</span></li>
+      </ul>
+      <h3>Selected work</h3>
+      <div class="case"><small>Ministry of Education's Innovation Cell · DTU · 2022–2025</small><b>Innovation and entrepreneurship programmes</b><p>Design-thinking and innovation programmes for school students, teachers, universities and the public.</p><div class="figs"><div><strong>16</strong><em>programmes</em></div><div><strong>2,000+</strong><em>registrations, one event</em></div></div></div>
+      <div class="case"><small>Design Mentorship · DTU · 2025 and 2026</small><b>A three-week design immersion</b><p>Foundational design capability for school students and first-year undergraduates from all disciplines.</p><div class="figs"><div><strong>2,086+</strong><em>applicants</em></div><div><strong>88%</strong><em>completion</em></div></div></div>
+      <button class="next" type="button" data-step="1"><small>Next branch</small><b>How you show up →</b></button>
+    </section>
+
+    <section class="sec" id="presence" hidden>
+      <span class="kicker">Branch · How you show up</span>
+      <h2>Let your work be seen as clearly as it deserves.</h2>
+      <p class="lede">Many organisations do remarkable work that their brand, website and reports don't yet reflect. We design how that work is seen: clearly, honestly and with care.</p>
+      <ul class="offers">
+        <li><b>Brand and identity</b><span>Names, marks and visual systems that carry your purpose.</span></li>
+        <li><b>Websites</b><span>Clear, fast websites that explain what you do and why it matters.</span></li>
+        <li><b>Impact reports and presentations</b><span>Evidence and stories, designed for funders, partners and the public.</span></li>
+      </ul>
+      <h3>Recent work</h3>
+      <div class="case"><small>Unfolded Future · 2026</small><b>Drishta: identity and website</b><p>A brand, design system and website for a metacognition practice community.</p><a class="tag" href="https://drishta.unfoldedfuture.com" style="text-decoration:none">Visit the site ↗</a></div>
+      <button class="next" type="button" data-step="1"><small>Next branch</small><b>Our work →</b></button>
+    </section>
+
+    <section class="sec" id="work" hidden>
+      <span class="kicker">The crown · Our work</span>
+      <h2>Selected work.</h2>
+      <p class="lede">Programme design, delivery and evaluation from the founders' practice.</p>
+      <div class="case"><small>01 · Innovation and entrepreneurship outreach</small><b>Programmes for the Ministry of Education's Innovation Cell</b><p>Delivered through DTU's Institution's Innovation Council, across schools, universities and public forums in Delhi, Assam and Nepal.</p><div class="figs"><div><strong>16</strong><em>programmes</em></div><div><strong>2,000+</strong><em>registrations for 320 places</em></div><div><strong>137</strong><em>students exhibited to industry</em></div></div></div>
+      <div class="case"><small>02 · Learning design and evaluation</small><b>Field Immersion Programme: Purani Dilli</b><p>A field-based learning intervention for design students, published in <i>Design for All</i> and assessed with the Metacognition Impact Framework.</p><div class="figs"><div><strong>12</strong><em>student authors</em></div><div><strong>6</strong><em>dimensions scored</em></div></div></div>
+      <div class="case"><small>03 · Programme design and delivery</small><b>Design Mentorship, Delhi Technological University</b><p>A three-week immersion in UX, visual and product design, with mentor-led instruction and weekly industry sessions.</p><div class="figs"><div><strong>2,086+</strong><em>applicants</em></div><div><strong>88%</strong><em>completion</em></div></div></div>
+      <button class="next" type="button" data-step="1"><small>Next branch</small><b>Exhibitions →</b></button>
+    </section>
+
+    <section class="sec" id="exhibitions" hidden>
+      <span class="kicker">A growing branch · Exhibitions</span>
+      <h2>Stories told in space.</h2>
+      <p class="lede">Exhibitions, learning spaces and visitor experiences for institutions and cultural organisations: the same care for clarity, carried into physical space.</p>
+      <ul class="offers">
+        <li><b>Exhibitions and displays</b><span>Programme showcases, travelling exhibitions and institutional galleries.</span></li>
+        <li><b>Museum interpretation</b><span>Narrative, wayfinding and visitor experience for museums and heritage sites.</span></li>
+        <li><b>Heritage projects</b><span>Interpretation and experience design alongside conservation specialists.</span></li>
+      </ul>
+      <p class="lede" style="margin-top:20px">This branch draws on Dr. Partha Pratim Das's training in industrial and space design (M.Des, IIT Delhi) and the public exhibitions we have produced for our programmes.</p>
+      <button class="next" type="button" data-step="1"><small>Next branch</small><b>People →</b></button>
+    </section>
+
+    <section class="sec" id="people" hidden>
+      <span class="kicker">Branch · People</span>
+      <h2>The people behind the studio.</h2>
+      <div class="person"><b>Dr. Partha Pratim Das</b><small>Founder</small><p>Assistant Professor, Design · Delhi Technological University</p><ul><li>PhD, Systems and Strategy Design · M.Des, Industrial Design · IIT Delhi</li><li>Innovation Ambassador, Ministry of Education's Innovation Cell</li></ul></div>
+      <div class="person"><b>Akanshya Dutta</b><small>Co-founder</small><p>Researcher and Consultant · Visiting Faculty, Design · Delhi Technological University</p><ul><li>Policy monitoring · Government of Assam, World Bank–supported</li><li>Capacity building, SIPRD Assam · SDG localisation</li></ul></div>
+      <button class="next" type="button" data-step="1"><small>Next branch</small><b>Roots and contact →</b></button>
+    </section>
+
+    <section class="sec" id="roots" hidden>
+      <span class="kicker">The roots · Contact</span>
+      <h2>Let's talk about your work.</h2>
+      <p class="lede">Think Studio is part of Unfolded Future. Our client work helps fund <a href="https://drishta.unfoldedfuture.com">Drishta</a>, a community practising self-awareness through metacognition.</p>
+      <div class="mail"><code id="addr">adutta03@unfoldedfuture.com</code><button class="btn line" id="copy" type="button">Copy address</button></div>
+      <p class="lede" style="margin-top:22px">Delhi · Assam</p>
+      <button class="next" type="button" data-step="1"><small>Back to the start</small><b>Programmes and people →</b></button>
+    </section>
+
+  </div>
+</aside>
+
+<script>
+(function(){
+  var order=['programmes','presence','work','exhibitions','people','roots'];
+  var stage=document.getElementById('stage'),tree=document.getElementById('tree'),panel=document.getElementById('panelBody');
+  var AR=1886/1326,cur=null;
+  var spots={};document.querySelectorAll('.spot').forEach(function(s){spots[s.dataset.go]=s});
+  function phone(){return innerWidth<=820}
+  function layout(){
+    var W=stage.clientWidth,H=stage.clientHeight,w,h,L,T;
+    if(phone()){var intro=document.querySelector('.intro'),top=intro.offsetTop+intro.offsetHeight+18;w=W*1.12;h=w/AR;if(top+h>H)top=Math.max(H-h-10,60);L=(W-w)/2;T=top}
+    else{w=Math.min(W*0.64,(H-70)*AR);h=w/AR;L=W-w-Math.max(18,W*0.02);T=Math.max(70,(H-h)*0.62);}
+    tree.style.width=w+'px';tree.style.height=h+'px';tree.style.left=L+'px';tree.style.top=T+'px';
+    // keep labels on screen
+    for(var k in spots){var s=spots[k],x=parseFloat(s.style.left)/100*w+L;s.classList.toggle('r',x>W-90);s.classList.toggle('l',x<90)}
+    zoom(false);
+  }
+  function zoom(animate){
+    if(!animate)tree.style.transition='none';
+    if(!cur){tree.style.transform='none'}
+    else{
+      var s=spots[cur],w=tree.offsetWidth,h=tree.offsetHeight,L=tree.offsetLeft,T=tree.offsetTop,W=stage.clientWidth,H=stage.clientHeight;
+      var px=parseFloat(s.style.left)/100*w,py=parseFloat(s.style.top)/100*h;
+      var k=phone()?2.2:1.8, tx=phone()?W*0.5:(W-Math.min(560,W*0.46))*0.5, ty=phone()?H*0.2:H*0.5;
+      var dx=tx-L-k*px,dy=ty-T-k*py;
+      tree.style.transform='translate('+dx+'px,'+dy+'px) scale('+k+')';
+    }
+    if(!animate){tree.offsetHeight;tree.style.transition=''}
+  }
+  function go(id,push){
+    cur=id||null;document.body.classList.toggle('zoomed',!!cur);
+    document.querySelectorAll('.sec').forEach(function(s){s.hidden=s.id!==cur});
+    panel.scrollTop=0;zoom(true);
+    if(push!==false){var u=cur?'#'+cur:location.pathname;history.replaceState(null,'',u)}
+    if(cur){var h=document.getElementById(cur).querySelector('h2');h.setAttribute('tabindex','-1');setTimeout(function(){h.focus({preventScroll:true})},50)}
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-go],[data-home],[data-step]');if(!t)return;
+    if(t.hasAttribute('data-home')){e.preventDefault();go(null);return}
+    if(t.dataset.go){go(t.dataset.go);return}
+    var i=order.indexOf(cur),n=(i+ +t.dataset.step+order.length)%order.length;go(order[i<0?0:n]);
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur)go(null)});
+  addEventListener('resize',layout);
+  layout();var h=location.hash.slice(1);if(order.indexOf(h)>-1){cur=h;document.body.classList.add('zoomed');document.getElementById(h).hidden=false;zoom(false)}
+  var b=document.getElementById('copy'),a=document.getElementById('addr');
+  b.addEventListener('click',function(){
+    function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy address'},1800)}
+    function sel(){var r=document.createRange();r.selectNodeContents(a);var s=getSelection();s.removeAllRanges();s.addRange(r);try{if(document.execCommand('copy')){done();return}}catch(e){}b.textContent='Selected: press copy'}
+    try{navigator.clipboard.writeText(a.textContent).then(done,sel)}catch(e){sel()}
+  });
+})();
+</script>
+</body>
+</html>
