@@ -81,6 +81,10 @@ body.zoomed .panel{transform:none}
 .pager button:hover{color:var(--mark-text)}
 .panel-body{overflow-y:auto;padding:clamp(20px,4vh,48px) clamp(22px,3vw,48px) 64px;-webkit-overflow-scrolling:touch}
 .sec[hidden]{display:none}
+.art{margin:0 0 30px}
+.art img{display:block;height:clamp(170px,30vh,300px);width:auto;max-width:100%;object-fit:contain;object-position:left bottom;filter:var(--tree-filter)}
+.credit{margin-top:36px;font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
 .sec .kicker{display:block;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .sec h2{font-size:clamp(2.4rem,3.6vw,3.6rem);line-height:.98;letter-spacing:-.045em;margin-top:18px}
 .sec .lede{margin-top:20px;font-size:clamp(1.05rem,1.3vw,1.2rem);line-height:1.5;color:var(--muted);max-width:32em}
@@ -117,6 +121,7 @@ body.zoomed .panel{transform:none}
 .next:hover b{color:var(--mark-text)}
 
 @media (max-width:820px){
+  .art img{height:150px}
   .bar{padding:16px 18px}
   .navr{display:none}
   .w{display:none}
@@ -171,6 +176,7 @@ body.zoomed .panel{transform:none}
   <div class="panel-body" id="panelBody">
 
     <section class="sec" id="programmes" hidden>
+      <figure class="art"><img src="art/programmes.webp" alt="Stipple drawing of a boy running with a hoop, by Dr. Partha Pratim Das" decoding="async"></figure>
       <span class="kicker">Branch · Programmes and people</span>
       <h2>Programmes that work, and teams that think clearly.</h2>
       <p class="lede">We help NGOs, foundations and public institutions design and evaluate their programmes, and build the thinking capability of the people who run them.</p>
@@ -186,6 +192,7 @@ body.zoomed .panel{transform:none}
     </section>
 
     <section class="sec" id="presence" hidden>
+      <figure class="art"><img src="art/presence.webp" alt="Stipple drawing of a butterfly, by Dr. Partha Pratim Das" decoding="async"></figure>
       <span class="kicker">Branch · How you show up</span>
       <h2>Let your work be seen as clearly as it deserves.</h2>
       <p class="lede">Many organisations do remarkable work that their brand, website and reports don't yet reflect. We design how that work is seen: clearly, honestly and with care.</p>
@@ -200,6 +207,7 @@ body.zoomed .panel{transform:none}
     </section>
 
     <section class="sec" id="work" hidden>
+      <figure class="art"><img src="art/work.webp" alt="Stipple drawing of a spider web between twigs, by Dr. Partha Pratim Das" decoding="async"></figure>
       <span class="kicker">The crown · Our work</span>
       <h2>Selected work.</h2>
       <p class="lede">Programme design, delivery and evaluation from the founders' practice.</p>
@@ -210,6 +218,7 @@ body.zoomed .panel{transform:none}
     </section>
 
     <section class="sec" id="exhibitions" hidden>
+      <figure class="art"><img src="art/exhibitions.webp" alt="Stipple drawing of a seedling, by Dr. Partha Pratim Das" decoding="async"></figure>
       <span class="kicker">A growing branch · Exhibitions</span>
       <h2>Stories told in space.</h2>
       <p class="lede">Exhibitions, learning spaces and visitor experiences for institutions and cultural organisations: the same care for clarity, carried into physical space.</p>
@@ -223,14 +232,17 @@ body.zoomed .panel{transform:none}
     </section>
 
     <section class="sec" id="people" hidden>
+      <figure class="art"><img src="art/people.webp" alt="Stipple drawing of hands shaping a clay pot, by Dr. Partha Pratim Das" decoding="async"></figure>
       <span class="kicker">Branch · People</span>
       <h2>The people behind the studio.</h2>
       <div class="person"><b>Dr. Partha Pratim Das</b><small>Founder</small><p>Assistant Professor, Design · Delhi Technological University</p><ul><li>PhD, Systems and Strategy Design · M.Des, Industrial Design · IIT Delhi</li><li>Innovation Ambassador, Ministry of Education's Innovation Cell</li></ul></div>
       <div class="person"><b>Akanshya Dutta</b><small>Co-founder</small><p>Researcher and Consultant · Visiting Faculty, Design · Delhi Technological University</p><ul><li>Policy monitoring · Government of Assam, World Bank–supported</li><li>Capacity building, SIPRD Assam · SDG localisation</li></ul></div>
+      <p class="credit">Drawings throughout by Dr. Partha Pratim Das</p>
       <button class="next" type="button" data-step="1"><small>Next branch</small><b>Roots and contact →</b></button>
     </section>
 
     <section class="sec" id="roots" hidden>
+      <figure class="art"><img src="art/roots.webp" alt="Stipple drawing of a tree and its roots, by Dr. Partha Pratim Das" decoding="async"></figure>
       <span class="kicker">The roots · Contact</span>
       <h2>Let's talk about your work.</h2>
       <p class="lede">Think Studio is part of Unfolded Future. Our client work helps fund <a href="https://drishta.unfoldedfuture.com">Drishta</a>, a community practising self-awareness through metacognition.</p>
@@ -286,6 +298,7 @@ body.zoomed .panel{transform:none}
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur)go(null)});
   var lw=innerWidth,rt;addEventListener('resize',function(){if(Math.abs(innerWidth-lw)<2&&phone())return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(layout,150)});
   layout();var h=location.hash.slice(1);if(order.indexOf(h)>-1){cur=h;document.body.classList.add('zoomed');document.getElementById(h).hidden=false;zoom(false)}
+  addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.art img').forEach(function(i){var x=new Image();x.src=i.src})},1200)});
   var b=document.getElementById('copy'),a=document.getElementById('addr');
   b.addEventListener('click',function(){
     function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy address'},1800)}
