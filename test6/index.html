@@ -62,14 +62,14 @@ body.zoomed .intro{opacity:0;transform:translateY(-16px);pointer-events:none}
 .tree img{display:block;width:100%;height:100%;filter:var(--tree-filter);user-select:none;-webkit-user-drag:none;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.tree,.intro,.panel,.spot{transition:none!important}}
 
-.spot{position:absolute;z-index:3;--s:1;transform:translate(-50%,-50%) scale(var(--s));display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 7px;border:0;border-radius:2px;background:transparent;color:var(--ink);font:500 clamp(.7rem,.88vw,.86rem)/1.1 var(--display);letter-spacing:-.01em;text-align:center;white-space:nowrap;cursor:pointer;transition:opacity .4s,transform .35s cubic-bezier(.2,.8,.2,1.25),background .2s,color .2s,box-shadow .3s}
-.spot::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:calc(100% + 26px);height:calc(100% + 22px);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--paper) 86%,transparent) 0%,color-mix(in srgb,var(--paper) 70%,transparent) 55%,transparent 100%);transition:opacity .3s}
+.spot{position:absolute;z-index:3;--s:1;transform:translate(-50%,-50%) scale(var(--s));display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 7px;border:0;border-radius:2px;background:transparent;color:var(--ink);font:500 clamp(.8rem,.95vw,.95rem)/1.18 var(--display);letter-spacing:0;text-shadow:0 0 6px var(--paper),0 0 2px var(--paper);text-align:center;white-space:nowrap;cursor:pointer;transition:opacity .4s,transform .35s cubic-bezier(.2,.8,.2,1.25),background .2s,color .2s,box-shadow .3s}
+.spot::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:calc(100% + 54px);height:calc(100% + 40px);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--paper) 0%,var(--paper) 52%,color-mix(in srgb,var(--paper) 80%,transparent) 72%,transparent 100%);transition:opacity .3s}
 .spot:hover::before,.spot:focus-visible::before,.spot.peek::before{opacity:0}
 
-.spot small{font:500 .6rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mark-text)}
-.spot.peek,.spot:hover,.spot:focus-visible{z-index:4;--s:1.22;background:var(--ink);color:var(--paper);outline:none;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.spot small{margin-top:3px;font:500 .58rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mark-text)}
+.spot.peek,.spot:hover,.spot:focus-visible{text-shadow:none;z-index:4;--s:1.22;background:var(--ink);color:var(--paper);outline:none;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .spot.peek small,.spot:hover small,.spot:focus-visible small{color:var(--mark)}
-@media (max-width:820px){.spot{font-size:.64rem;padding:2px 5px;letter-spacing:0}.spot small{font-size:.5rem}}
+@media (max-width:820px){.spot{font-size:.7rem;padding:2px 4px}.spot[data-go=people]{left:14%!important}.spot[data-go=presence]{left:80%!important}.spot::before{width:calc(100% + 30px);height:calc(100% + 22px)}.spot small{font-size:.48rem;margin-top:1px}}
 
 body.zoomed .spot{opacity:0;pointer-events:none}
 
@@ -132,9 +132,6 @@ body.zoomed .panel{transform:none}
   .intro h1{font-size:2.7rem}
   .intro p{margin-top:14px}
   .intro .hint{margin-top:14px}
-  .spot{font-size:.6rem;padding:4px 7px;gap:6px;letter-spacing:.1em}
-  .spot::before{width:6px;height:6px}
-  .spot small{display:none}
   .panel{top:auto;left:0;width:auto;height:66%;border-left:0;border-top:1px solid var(--ink);transform:translateY(102%)}
   .panel-top{padding:14px 20px}
   .panel-body{padding:16px 20px 48px}
@@ -162,12 +159,12 @@ body.zoomed .panel{transform:none}
 
   <div class="tree" id="tree" aria-label="Site map drawn as a tree">
     <img src="tree-800.jpg" srcset="tree-800.webp 800w, tree-900.webp 900w, tree-1200.webp 1200w, tree-1886.webp 1886w" sizes="(max-width:820px) 92vw, 64vw" decoding="async" fetchpriority="high" alt="Pen-and-ink drawing of a wide old tree by Dr. Partha Pratim Das" width="1886" height="1326">
-    <button class="spot" data-go="programmes" style="left:19%;top:37%"><span>Programmes<br>and people</span></button>
-    <button class="spot" data-go="presence" style="left:82%;top:52%"><span>How you<br>show up</span></button>
-    <button class="spot" data-go="work" style="left:50%;top:15%"><span>Our work</span></button>
+    <button class="spot" data-go="programmes" style="left:18%;top:37%"><span>Programmes<br>and people</span></button>
+    <button class="spot" data-go="presence" style="left:82%;top:51%"><span>How you<br>show up</span></button>
+    <button class="spot" data-go="work" style="left:49%;top:15%"><span>Our work</span></button>
     <button class="spot" data-go="exhibitions" style="left:77%;top:24%"><span>Exhibitions</span><small>growing</small></button>
-    <button class="spot" data-go="people" style="left:11%;top:74%"><span>People</span></button>
-    <button class="spot" data-go="roots" style="left:55%;top:93%"><span>Roots and<br>contact</span></button>
+    <button class="spot" data-go="people" style="left:9%;top:72%"><span>People</span></button>
+    <button class="spot" data-go="roots" style="left:55%;top:92%"><span>Roots and<br>contact</span></button>
   </div>
 </main>
 
