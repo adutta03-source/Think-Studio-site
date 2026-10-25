@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Think Studio | Test 6: The tree</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6.5' fill='%23efc55e' stroke='%23141a17' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preload" href="../test6/fonts/bricolage-grotesque-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../test6/fonts/figtree-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" fetchpriority="high" href="tree-800.webp" imagesrcset="tree-800.webp 800w, tree-1200.webp 1200w, tree-1500.webp 1500w" imagesizes="(max-width:820px) 100vw, 58vw">
+<style>
+@font-face{font-family:"Bricolage Grotesque";font-weight:300;font-style:normal;font-display:swap;src:url(../test6/fonts/bricolage-grotesque-latin-300-normal.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-weight:500;font-style:normal;font-display:swap;src:url(../test6/fonts/bricolage-grotesque-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-weight:400;font-style:normal;font-display:swap;src:url(../test6/fonts/figtree-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-weight:500;font-style:normal;font-display:swap;src:url(../test6/fonts/figtree-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:500;font-style:normal;font-display:swap;src:url(../test6/fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2")}
+
+:root{
+  --paper:#f7f6f2; --ink:#111311; --muted:#5b605b; --line:#dcdad2; --mark:#efc55e; --mark-text:#8a6a1f; --panel:#f7f6f2; --tree-filter:none; --tree-blend:multiply;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Figtree","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --banner:31px; --pad:clamp(18px,3vw,44px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1014;--ink:#efede6;--muted:#a3a8a2;--line:#2a2e2a;--mark:#d4aa48;--mark-text:#e2b955;--panel:#0f1014;--tree-filter:invert(.97);--tree-blend:screen;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1014;--ink:#efede6;--muted:#a3a8a2;--line:#2a2e2a;--mark:#d4aa48;--mark-text:#e2b955;--panel:#0f1014;--tree-filter:invert(.97);--tree-blend:screen;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;overflow:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:500;margin:0}
+p{margin:0}
+.banner{position:fixed;top:0;left:0;right:0;height:var(--banner);z-index:50;background:#efc55e;color:#141a17;font:600 12px/var(--banner) var(--body);letter-spacing:.14em;text-transform:uppercase;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 10px}
+.lbl{font:500 .72rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+
+/* bar */
+.bar{position:fixed;top:var(--banner);left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:22px var(--pad);pointer-events:none}
+.bar>*{pointer-events:auto}
+.brand{background:var(--paper);padding:4px 8px 4px 0;display:flex;align-items:center;gap:10px;text-decoration:none;font:500 1.2rem var(--display);letter-spacing:-.02em}
+.brand i{width:15px;height:15px;border-radius:50%;background:var(--mark);border:2.5px solid var(--ink)}
+.navr{display:flex;gap:22px}
+.navr button,.navr a{font:500 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;background:none;border:0;color:var(--ink);cursor:pointer;padding:6px 0;text-decoration:none}
+.navr button::before,.navr a::before{content:"[ "}.navr button::after,.navr a::after{content:" ]"}
+.navr button:hover{color:var(--mark-text)}
+.btn{font:500 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:12px 18px;border:1.5px solid var(--ink);border-radius:0;background:var(--ink);color:var(--paper);cursor:pointer}
+.btn.line{background:transparent;color:var(--ink)}
+.btn.line:hover{background:var(--mark);border-color:var(--mark);color:#111}
+
+/* stage */
+.stage{position:fixed;inset:var(--banner) 0 0 0;overflow:hidden}
+.intro{position:absolute;z-index:5;left:var(--pad);top:clamp(110px,18vh,190px);max-width:min(520px,31vw);transition:opacity .5s,transform .7s}
+.intro .lbl{color:var(--muted)}
+.intro h1{font-size:clamp(2.6rem,4.6vw,4.6rem);line-height:.94;letter-spacing:-.05em;margin-top:18px}
+.intro h1 span{display:block;color:var(--mark-text)}
+.intro p{margin-top:22px;max-width:27em;color:var(--muted);font-size:clamp(1rem,1.2vw,1.12rem)}
+.intro .hint{margin-top:28px;color:var(--ink);font-size:.72rem}
+body.zoomed .intro{opacity:0;transform:translateY(-16px);pointer-events:none}
+
+.tree{position:absolute;transform-origin:0 0;transition:transform .7s cubic-bezier(.6,0,.2,1);backface-visibility:hidden}
+.tree img{display:block;width:100%;height:100%;filter:var(--tree-filter);user-select:none;-webkit-user-drag:none;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.tree,.intro,.panel,.spot{transition:none!important}}
+
+.spot{position:absolute;z-index:3;--s:1;transform:translate(-50%,-50%) scale(var(--s));display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 7px;border:0;border-radius:2px;background:transparent;color:var(--ink);font:500 clamp(.8rem,.95vw,.95rem)/1.18 var(--display);letter-spacing:0;text-shadow:0 0 6px var(--paper),0 0 2px var(--paper);text-align:center;white-space:nowrap;cursor:pointer;transition:opacity .4s,transform .35s cubic-bezier(.2,.8,.2,1.25),background .2s,color .2s,box-shadow .3s}
+.spot::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:calc(100% + 54px);height:calc(100% + 40px);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--paper) 0%,var(--paper) 52%,color-mix(in srgb,var(--paper) 80%,transparent) 72%,transparent 100%);transition:opacity .3s}
+.spot:hover::before,.spot:focus-visible::before,.spot.peek::before{opacity:0}
+
+.spot small{margin-top:3px;font:500 .58rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mark-text)}
+.spot.peek,.spot:hover,.spot:focus-visible{text-shadow:none;z-index:4;--s:1.22;background:var(--ink);color:var(--paper);outline:none;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.spot.peek small,.spot:hover small,.spot:focus-visible small{color:var(--mark)}
+@media (max-width:820px){.spot{font-size:.7rem;padding:2px 4px}.spot[data-go=people]{left:14%!important}.spot[data-go=presence]{left:80%!important}.spot::before{width:calc(100% + 30px);height:calc(100% + 22px)}.spot small{font-size:.48rem;margin-top:1px}}
+
+body.zoomed .spot{opacity:0;pointer-events:none}
+
+/* panel */
+.panel{position:fixed;z-index:40;top:var(--banner);right:0;bottom:0;width:min(680px,52vw);background:var(--panel);border-left:1px solid var(--ink);transform:translateX(101%);transition:transform .8s cubic-bezier(.7,0,.2,1);display:flex;flex-direction:column}
+body.zoomed .panel{transform:none}
+.panel-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px clamp(22px,3vw,48px)}
+.back{font:500 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;background:none;border:0;color:var(--ink);cursor:pointer;padding:6px 0}
+.back:hover{color:var(--mark-text)}
+.pager{display:flex;gap:18px}
+.pager button{font:500 .74rem var(--mono);letter-spacing:.14em;background:none;border:0;color:var(--ink);cursor:pointer;padding:6px 0}
+.pager button:hover{color:var(--mark-text)}
+.panel-body{overflow-y:auto;padding:clamp(20px,4vh,48px) clamp(22px,3vw,48px) 64px;-webkit-overflow-scrolling:touch}
+.sec[hidden]{display:none}
+.art{margin:0 0 30px}
+.art img{display:block;height:clamp(170px,30vh,300px);width:auto;max-width:100%;object-fit:contain;object-position:left bottom;filter:var(--tree-filter)}
+.credit{margin-top:36px;font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+.sec .kicker{display:block;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sec h2{font-size:clamp(2.4rem,3.6vw,3.6rem);line-height:.98;letter-spacing:-.045em;margin-top:18px}
+.sec .lede{margin-top:20px;font-size:clamp(1.05rem,1.3vw,1.2rem);line-height:1.5;color:var(--muted);max-width:32em}
+.sec h3{font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:56px}
+.offers{list-style:none;padding:0;margin:40px 0 0;counter-reset:o}
+.offers li{counter-increment:o;display:grid;grid-template-columns:3em minmax(0,1fr);padding:18px 0;border-top:1px solid var(--line)}
+.offers li:last-child{border-bottom:1px solid var(--line)}
+.offers li::before{content:"0" counter(o);font:500 .72rem/2.4 var(--mono);color:var(--mark-text)}
+.offers b{display:block;font:500 clamp(1.25rem,1.7vw,1.5rem)/1.15 var(--display);letter-spacing:-.025em}
+.offers span{grid-column:2;display:block;color:var(--muted);margin-top:6px;font-size:.95rem}
+.case{margin-top:0;padding:28px 0;border-top:1px solid var(--ink)}
+.sec h3+.case{margin-top:16px}
+.lede+.case{margin-top:40px}
+.case small{display:block;font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.case b{display:block;font:500 clamp(1.3rem,1.8vw,1.6rem)/1.12 var(--display);letter-spacing:-.025em;margin-top:10px}
+.case p{margin-top:10px;color:var(--muted);font-size:.98rem;max-width:34em}
+.figs{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:22px}
+.figs div{display:flex;flex-direction:column}
+.figs strong{font:300 clamp(2.4rem,3.6vw,3.4rem)/1 var(--display);letter-spacing:-.05em}
+.figs em{font:500 .66rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.tag{display:inline-block;margin-top:18px;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1.5px solid var(--mark);padding-bottom:3px}
+.person{padding:28px 0;border-top:1px solid var(--ink)}
+.sec h2+.person{margin-top:40px}
+.person b{display:block;font:500 clamp(1.5rem,2vw,1.8rem) var(--display);letter-spacing:-.03em}
+.person small{display:block;font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mark-text);margin-top:8px}
+.person p{margin-top:12px;color:var(--muted)}
+.person ul{margin:12px 0 0;padding:0;list-style:none;color:var(--muted);font-size:.92rem}
+.person li{padding:4px 0}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:40px}
+.mail code{font:500 clamp(1.1rem,1.8vw,1.4rem) var(--display);letter-spacing:-.02em;border-bottom:2px solid var(--mark);padding-bottom:4px}
+.next{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:64px;padding:26px 0 0;border:0;border-top:1px solid var(--ink);background:none;width:100%;color:var(--ink);cursor:pointer;text-align:left}
+.next small{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.next b{font:500 clamp(1.4rem,2vw,1.8rem) var(--display);letter-spacing:-.03em}
+.next:hover b{color:var(--mark-text)}
+
+@media (max-width:820px){
+  .art img{height:150px}
+  .bar{padding:16px 18px}
+  .navr{display:none}
+  .w{display:none}
+  .intro{left:18px;right:18px;top:84px;max-width:none}
+  .intro h1{font-size:2.7rem}
+  .intro p{margin-top:14px}
+  .intro .hint{margin-top:14px}
+  .panel{top:auto;left:0;width:auto;height:66%;border-left:0;border-top:1px solid var(--ink);transform:translateY(102%)}
+  .panel-top{padding:14px 20px}
+  .panel-body{padding:16px 20px 48px}
+  .sec h2{font-size:2.3rem}
+  .offers{margin-top:28px}
+  .next{margin-top:44px}
+}
+
+/* ===== option 2: quiet tree ===== */
+.spot{position:absolute;z-index:3;transform:translate(-50%,-50%);border-radius:50%;background:transparent;border:0;padding:0;cursor:pointer;color:transparent}
+.spot::before,.spot::after{content:none!important}
+.spot:hover,.spot:focus-visible,.spot.peek{background:transparent!important;box-shadow:none!important;color:transparent!important}
+.spot:focus-visible{outline:1.5px dashed var(--mark-text);outline-offset:-6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tree .base,.tree .hl{position:absolute;inset:0;transition:opacity .35s;mix-blend-mode:var(--tree-blend)}
+.tree .hl{opacity:0;pointer-events:none}
+body.hovering .tree .base{opacity:.4}
+body.hovering .tree .hl{opacity:1}
+.card{margin-top:28px;min-height:110px}
+.card .cbody{display:none;flex-direction:column;gap:6px}
+body.hovering .card .hint{display:none}
+body.hovering .card .cbody{display:flex;animation:cin .3s ease}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card .ck{color:var(--mark-text)}
+.card .cn{font:500 clamp(1.8rem,2.6vw,2.4rem)/1 var(--display);letter-spacing:-.035em}
+.card .cd{color:var(--muted);font-size:1rem}
+.mlist{display:none}
+@media (max-width:820px){
+  .card{display:none}
+  .mlist{position:absolute;left:18px;right:18px;display:grid;grid-template-columns:1fr 1fr;gap:0 16px;z-index:5;border-top:1px solid var(--ink)}
+  .mlist button{display:flex;gap:8px;align-items:baseline;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:11px 0;font:500 .92rem var(--display);color:var(--ink);cursor:pointer}
+  .mlist small{font:500 .62rem var(--mono);color:var(--mark-text)}
+  body.zoomed .mlist{opacity:0;pointer-events:none}
+}
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;margin-top:16px}
+.way{padding:20px 0 22px;border-top:1px solid var(--ink)}
+.way>b{font:500 1.35rem var(--display);letter-spacing:-.025em}
+.way dl{margin:12px 0 0;display:grid;grid-template-columns:4.6em 1fr;gap:8px 12px}
+.way dt{font:500 .66rem/1.9 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.way dd{margin:0;font-size:.93rem;line-height:1.5;color:var(--muted)}
+.way dd:last-of-type{color:var(--ink);font-weight:500}
+.rate{display:flex;flex-direction:column;gap:6px;margin-top:16px;padding:22px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.rate strong{font:300 clamp(2.4rem,3.6vw,3.2rem)/1 var(--display);letter-spacing:-.04em}
+.rate small{font:500 .74rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-left:8px}
+.steps{list-style:none;padding:0;margin:26px 0 0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:2.4em 1fr;padding:12px 0;border-top:1px solid var(--line)}
+.steps li::before{content:"0" counter(s);font:500 .72rem/1.9 var(--mono);color:var(--mark-text)}
+.steps b{font:500 1.08rem var(--display)}.steps span{grid-column:2;color:var(--muted);font-size:.93rem}
+.note{margin-top:20px;font-size:.88rem;color:var(--muted);line-height:1.55}
+@media (max-width:820px){.ways{grid-template-columns:1fr}}
+
+/* ===== test8: transparent tree, labels outside, leader lines ===== */
+.tree .base,.tree .hl{mix-blend-mode:normal!important}
+.card .cbody{display:none!important}body.hovering .card .hint{display:block!important}
+.leads{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}
+.leads path{stroke:var(--ink);stroke-width:.8;fill:none;opacity:.55;transition:stroke .25s,opacity .25s}
+.leads circle{fill:var(--ink);opacity:.7;transition:fill .25s}
+.leads g.on path{stroke:var(--mark-text);opacity:1;stroke-width:1.4}.leads g.on circle{fill:var(--mark-text);opacity:1}
+.lab{position:absolute;z-index:4;white-space:nowrap;background:none;border:0;padding:6px 0;cursor:pointer;color:var(--ink);font:500 clamp(.95rem,1.15vw,1.12rem) var(--display);letter-spacing:-.01em;transition:color .2s,opacity .4s}
+.lab small{font:500 .66rem var(--mono);letter-spacing:.1em;color:var(--mark-text);margin-right:8px;vertical-align:2px}
+.lab.c{transform:translate(-50%,-100%)}.lab.l{transform:translate(0,-100%)}.lab.r{transform:translate(-100%,-100%)}
+.lab.b.l{transform:translate(0,0)}.lab.b.r{transform:translate(-100%,0)}.lab.b.c{transform:translate(-50%,0)}
+.lab:hover,.lab.on,.lab:focus-visible{color:var(--mark-text);outline:none}
+.lab.on{text-decoration:underline 1.5px;text-underline-offset:5px}
+body.zoomed .lab,body.zoomed .leads{opacity:0;pointer-events:none}
+.tree .hl.sway{animation:sway 3.2s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(1.5px,-1px) rotate(.25deg)}}
+@media (prefers-reduced-motion:reduce){.tree .hl.sway{animation:none}}
+.art img{filter:var(--tree-filter)}
+@media (max-width:820px){.lab,.leads{display:none}}
+</style>
+</head>
+<body>
+<div class="banner">Test site 8 · the tree, refined · not live · <a href="https://thinkstudio.unfoldedfuture.com/">live site</a></div>
+
+<header class="bar">
+  <a class="brand" href="#" data-home><i aria-hidden="true"></i><span><b>Think</b> Studio</span></a>
+  <nav class="navr" aria-label="Sections"><button type="button" data-go="work">Work</button><button type="button" data-go="people">People</button><button type="button" data-go="roots">Work with us</button></nav>
+</header>
+
+<main class="stage" id="stage">
+  <div class="intro">
+    <span class="lbl">Design · Systems · Strategy — Delhi</span>
+    <h1>Better systems.<br><span>Clearer thinking.</span></h1>
+    <p>We design for organisations that serve people: their programmes, their teams, and how they show up in the world.</p>
+    <div class="card" aria-live="polite"><p class="hint lbl">[ Select a branch to explore ]</p><div class="cbody"><span class="lbl ck"></span><b class="cn"></b><span class="cd"></span></div></div>
+  </div>
+
+  <div class="tree" id="tree" aria-label="Site map drawn as a tree">
+    <img class="base" src="tree-800.webp" srcset="tree-800.webp 800w, tree-1200.webp 1200w, tree-1500.webp 1500w" sizes="(max-width:820px) 100vw, 58vw" decoding="async" fetchpriority="high" alt="Pen-and-ink drawing of a wide old tree by Dr. Partha Pratim Das" width="1886" height="1326">
+    <img class="hl" aria-hidden="true" src="tree-800.webp" srcset="tree-800.webp 800w, tree-1200.webp 1200w, tree-1500.webp 1500w" sizes="(max-width:820px) 100vw, 58vw" decoding="async" alt="" width="1886" height="1326">
+    <svg class="leads" viewBox="0 0 100 70.3" preserveAspectRatio="none" aria-hidden="true"><g data-k="programmes"><path d="M18 26.01 L6 -7.03" vector-effect="non-scaling-stroke"/><circle cx="18" cy="26.01" r=".55"/></g><g data-k="work"><path d="M49 10.54 L49 -9.84" vector-effect="non-scaling-stroke"/><circle cx="49" cy="10.54" r=".55"/></g><g data-k="exhibitions"><path d="M77 16.87 L92 -7.03" vector-effect="non-scaling-stroke"/><circle cx="77" cy="16.87" r=".55"/></g><g data-k="presence"><path d="M82 35.85 L100.8 80.14" vector-effect="non-scaling-stroke"/><circle cx="82" cy="35.85" r=".55"/></g><g data-k="people"><path d="M9 50.62 L2.2 80.14" vector-effect="non-scaling-stroke"/><circle cx="9" cy="50.62" r=".55"/></g><g data-k="roots"><path d="M55 64.68 L51.2 80.14" vector-effect="non-scaling-stroke"/><circle cx="55" cy="64.68" r=".55"/></g></svg>
+    <button class="lab l" data-go="programmes" style="left:6%;top:-9%"><small>01</small>Programmes and people</button><button class="lab c" data-go="work" style="left:49%;top:-13%"><small>03</small>Our work</button><button class="lab r" data-go="exhibitions" style="left:92%;top:-9%"><small>04</small>Exhibitions</button><button class="lab r b" data-go="presence" style="left:100%;top:110%"><small>02</small>How you show up</button><button class="lab l b" data-go="people" style="left:3%;top:110%"><small>05</small>People</button><button class="lab l b" data-go="roots" style="left:52%;top:110%"><small>06</small>Work with us</button>
+    <button class="spot" data-go="programmes" data-n="01" data-name="Programmes and people" data-desc="Programme design, evaluation and capability building" style="left:18%;top:37%;width:30%;height:26%"><span class="sr">Programmes and people</span></button>
+    <button class="spot" data-go="presence" data-n="02" data-name="How you show up" data-desc="Brand, websites and impact reports" style="left:82%;top:51%;width:26%;height:28%"><span class="sr">How you show up</span></button>
+    <button class="spot" data-go="work" data-n="03" data-name="Our work" data-desc="Selected case studies" style="left:49%;top:15%;width:26%;height:26%"><span class="sr">Our work</span></button>
+    <button class="spot" data-go="exhibitions" data-n="04" data-name="Exhibitions" data-desc="Stories told in space · a growing branch" style="left:77%;top:24%;width:24%;height:24%"><span class="sr">Exhibitions</span></button>
+    <button class="spot" data-go="people" data-n="05" data-name="People" data-desc="The team behind the studio" style="left:9%;top:72%;width:18%;height:24%"><span class="sr">People</span></button>
+    <button class="spot" data-go="roots" data-n="06" data-name="Work with us" data-desc="Ways to work, fees and contact" style="left:55%;top:92%;width:28%;height:20%"><span class="sr">Work with us</span></button>
+  </div>
+  <nav class="mlist" aria-label="Sections"><button type="button" data-go="programmes"><small>01</small>Programmes and people</button><button type="button" data-go="presence"><small>02</small>How you show up</button><button type="button" data-go="work"><small>03</small>Our work</button><button type="button" data-go="exhibitions"><small>04</small>Exhibitions</button><button type="button" data-go="people"><small>05</small>People</button><button type="button" data-go="roots"><small>06</small>Work with us</button></nav>
+</main>
+
+<aside class="panel" id="panel" aria-live="polite">
+  <div class="panel-top">
+    <button class="back" type="button" data-home>[ ← <span class="w">The whole </span>tree ]</button>
+    <div class="pager"><button type="button" data-step="-1" aria-label="Previous branch">[ ←<span class="w"> Prev</span> ]</button><button type="button" data-step="1" aria-label="Next branch">[ <span class="w">Next </span>→ ]</button></div>
+  </div>
+  <div class="panel-body" id="panelBody">
+
+    <section class="sec" id="programmes" hidden>
+      <figure class="art"><img src="art/programmes.webp" alt="Stipple drawing of a boy running with a hoop, by Dr. Partha Pratim Das" decoding="async"></figure>
+      <span class="kicker">Branch · Programmes and people</span>
+      <h2>Programmes that work, and teams that think clearly.</h2>
+      <p class="lede">We help NGOs, foundations and public institutions design and evaluate their programmes, and build the thinking capability of the people who run them.</p>
+      <ul class="offers">
+        <li><b>Programme design and evaluation</b><span>From the first brief to measured outcomes, for public and social programmes.</span></li>
+        <li><b>Capability building</b><span>Workshops and fellowships in design thinking and metacognition, for teams and institutions.</span></li>
+        <li><b>Team retreats</b><span>Immersive retreats for organisations, delivered with <a href="https://drishta.unfoldedfuture.com">Drishta</a>.</span></li>
+      </ul>
+      <h3>Selected work</h3>
+      <div class="case"><small>Ministry of Education's Innovation Cell · DTU · 2022–2025</small><b>Innovation and entrepreneurship programmes</b><p>Design-thinking and innovation programmes for school students, teachers, universities and the public.</p><div class="figs"><div><strong>16</strong><em>programmes</em></div><div><strong>2,000+</strong><em>registrations, one event</em></div></div></div>
+      <div class="case"><small>Design Mentorship · DTU · 2025 and 2026</small><b>A three-week design immersion</b><p>Foundational design capability for school students and first-year undergraduates from all disciplines.</p><div class="figs"><div><strong>2,086+</strong><em>applicants</em></div><div><strong>88%</strong><em>completion</em></div></div></div>
+      <button class="next" type="button" data-step="1"><small>Next branch</small><b>How you show up →</b></button>
+    </section>
+
+    <section class="sec" id="presence" hidden>
+      <figure class="art"><img src="art/presence.webp" alt="Stipple drawing of a butterfly, by Dr. Partha Pratim Das" decoding="async"></figure>
+      <span class="kicker">Branch · How you show up</span>
+      <h2>Let your work be seen as clearly as it deserves.</h2>
+      <p class="lede">Many organisations do remarkable work that their brand, website and reports don't yet reflect. We design how that work is seen: clearly, honestly and with care.</p>
+      <ul class="offers">
+        <li><b>Brand and identity</b><span>Names, marks and visual systems that carry your purpose.</span></li>
+        <li><b>Websites</b><span>Clear, fast websites that explain what you do and why it matters.</span></li>
+        <li><b>Impact reports and presentations</b><span>Evidence and stories, designed for funders, partners and the public.</span></li>
+      </ul>
+      <h3>Recent work</h3>
+      <div class="case"><small>Unfolded Future · 2026</small><b>Drishta: identity and website</b><p>A brand, design system and website for a metacognition practice community.</p><a class="tag" href="https://drishta.unfoldedfuture.com" style="text-decoration:none">Visit the site ↗</a></div>
+      <button class="next" type="button" data-step="1"><small>Next branch</small><b>Our work →</b></button>
+    </section>
+
+    <section class="sec" id="work" hidden>
+      <figure class="art"><img src="art/work.webp" alt="Stipple drawing of a spider web between twigs, by Dr. Partha Pratim Das" decoding="async"></figure>
+      <span class="kicker">The crown · Our work</span>
+      <h2>Selected work.</h2>
+      <p class="lede">Programme design, delivery and evaluation from the founders' practice.</p>
+      <div class="case"><small>01 · Innovation and entrepreneurship outreach</small><b>Programmes for the Ministry of Education's Innovation Cell</b><p>Delivered through DTU's Institution's Innovation Council, across schools, universities and public forums in Delhi, Assam and Nepal.</p><div class="figs"><div><strong>16</strong><em>programmes</em></div><div><strong>2,000+</strong><em>registrations for 320 places</em></div><div><strong>137</strong><em>students exhibited to industry</em></div></div></div>
+      <div class="case"><small>02 · Learning design and evaluation</small><b>Field Immersion Programme: Purani Dilli</b><p>A field-based learning intervention for design students, published in <i>Design for All</i> and assessed with the Metacognition Impact Framework.</p><div class="figs"><div><strong>12</strong><em>student authors</em></div><div><strong>6</strong><em>dimensions scored</em></div></div></div>
+      <div class="case"><small>03 · Programme design and delivery</small><b>Design Mentorship, Delhi Technological University</b><p>A three-week immersion in UX, visual and product design, with mentor-led instruction and weekly industry sessions.</p><div class="figs"><div><strong>2,086+</strong><em>applicants</em></div><div><strong>88%</strong><em>completion</em></div></div></div>
+      <button class="next" type="button" data-step="1"><small>Next branch</small><b>Exhibitions →</b></button>
+    </section>
+
+    <section class="sec" id="exhibitions" hidden>
+      <figure class="art"><img src="art/exhibitions.webp" alt="Stipple drawing of a seedling, by Dr. Partha Pratim Das" decoding="async"></figure>
+      <span class="kicker">A growing branch · Exhibitions</span>
+      <h2>Stories told in space.</h2>
+      <p class="lede">Exhibitions, learning spaces and visitor experiences for institutions and cultural organisations: the same care for clarity, carried into physical space.</p>
+      <ul class="offers">
+        <li><b>Exhibitions and displays</b><span>Programme showcases, travelling exhibitions and institutional galleries.</span></li>
+        <li><b>Museum interpretation</b><span>Narrative, wayfinding and visitor experience for museums and heritage sites.</span></li>
+        <li><b>Heritage projects</b><span>Interpretation and experience design alongside conservation specialists.</span></li>
+      </ul>
+      <p class="lede" style="margin-top:20px">This branch draws on Dr. Partha Pratim Das's training in industrial and space design (M.Des, IIT Delhi) and the public exhibitions we have produced for our programmes.</p>
+      <button class="next" type="button" data-step="1"><small>Next branch</small><b>People →</b></button>
+    </section>
+
+    <section class="sec" id="people" hidden>
+      <figure class="art"><img src="art/people.webp" alt="Stipple drawing of hands shaping a clay pot, by Dr. Partha Pratim Das" decoding="async"></figure>
+      <span class="kicker">Branch · People</span>
+      <h2>The people behind the studio.</h2>
+      <div class="person"><b>Dr. Partha Pratim Das</b><small>Founder</small><p>Assistant Professor, Design · Delhi Technological University</p><ul><li>PhD, Systems and Strategy Design · M.Des, Industrial Design · IIT Delhi</li><li>Innovation Ambassador, Ministry of Education's Innovation Cell</li></ul></div>
+      <div class="person"><b>Akanshya Dutta</b><small>Co-founder</small><p>Researcher and Consultant · Visiting Faculty, Design · Delhi Technological University</p><ul><li>Policy monitoring · Government of Assam, World Bank–supported</li><li>Capacity building, SIPRD Assam · SDG localisation</li></ul></div>
+      <p class="credit">Drawings throughout by Dr. Partha Pratim Das</p>
+      <button class="next" type="button" data-step="1"><small>Next branch</small><b>Work with us →</b></button>
+    </section>
+
+    <section class="sec" id="roots" hidden>
+      <figure class="art"><img src="art/roots.webp" alt="Stipple drawing of a tree and its roots, by Dr. Partha Pratim Das" decoding="async"></figure>
+      <span class="kicker">The roots · Working with us</span>
+      <h2>Let's talk about your work.</h2>
+      <p class="lede">Think Studio is part of Unfolded Future. Our client work helps fund <a href="https://drishta.unfoldedfuture.com">Drishta</a>, a community practising self-awareness through metacognition.</p>
+      <h3>Ways to work with us</h3>
+      <div class="ways">
+        <div class="way"><b>Workshop</b><dl><dt>Fits</dt><dd>One team building one skill: design thinking, systems thinking or metacognition.</dd><dt>You get</dt><dd>A session designed for your team, facilitation, materials and a short follow-up note.</dd><dt>Time</dt><dd>2–3 studio days, including preparation</dd></dl></div>
+        <div class="way"><b>Project</b><dl><dt>Fits</dt><dd>A result you can describe in a sentence: an identity, a website, an impact report, a programme design, an evaluation or an exhibition.</dd><dt>You get</dt><dd>A written scope, clear milestones and a fixed quote.</dd><dt>Time</dt><dd>Usually 6–25 studio days, over 3 to 12 weeks</dd></dl></div>
+        <div class="way"><b>Partnership</b><dl><dt>Fits</dt><dd>Institutions that need steady support across programmes, people and communication.</dd><dt>You get</dt><dd>The same two founders, a set number of studio days each month and a quarterly review.</dd><dt>Time</dt><dd>4–8 studio days a month, for 6 to 12 months</dd></dl></div>
+        <div class="way"><b>Team retreat</b><dl><dt>Fits</dt><dd>Teams who want to think, decide and work better together.</dd><dt>You get</dt><dd>A two- to three-day retreat designed and facilitated with <a href="https://drishta.unfoldedfuture.com">Drishta</a>; venue and travel arranged at cost.</dd><dt>Time</dt><dd>3–5 studio days, plus the retreat</dd></dl></div>
+      </div>
+      <h3>How fees work</h3>
+      <div class="rate"><span class="lbl">One rate for everyone</span><strong>₹15,000 <small>per studio day</small></strong></div>
+      <p class="lede">We don't publish a price list, because the same service can mean very different work for different organisations. Instead, we count the studio days a piece of work needs, agree them with you, and fix the quote.</p>
+      <ol class="steps">
+        <li><b>A short call</b><span>We understand what you need and whether we are the right fit.</span></li>
+        <li><b>A written scope</b><span>What we will deliver, the milestones and the number of studio days.</span></li>
+        <li><b>A fixed quote</b><span>No surprises: the fee does not change unless the scope does.</span></li>
+      </ol>
+      <p class="note">Registered non-profits and public institutions receive a reduced rate. Companies pay the full rate, which helps fund scholarship places in Drishta. Fees exclude applicable taxes and travel outside Delhi.</p>
+      <h3>Contact</h3>
+      <div class="mail"><code id="addr">adutta03@unfoldedfuture.com</code><button class="btn line" id="copy" type="button">Copy address</button></div>
+      <p class="lede" style="margin-top:22px">Delhi · Assam</p>
+      <button class="next" type="button" data-step="1"><small>Back to the start</small><b>Programmes and people →</b></button>
+    </section>
+
+  </div>
+</aside>
+
+<script>
+(function(){
+  var order=['programmes','presence','work','exhibitions','people','roots'];
+  var stage=document.getElementById('stage'),tree=document.getElementById('tree'),panel=document.getElementById('panelBody');
+  var AR=1886/1326,cur=null;
+  var spots={};document.querySelectorAll('.spot').forEach(function(s){spots[s.dataset.go]=s});
+  function phone(){return innerWidth<=820}
+  function layout(){
+    var W=stage.clientWidth,H=stage.clientHeight,w,h,L,T;
+    if(phone()||H>W*1.1){var intro=document.querySelector('.intro'),top=intro.offsetTop+intro.offsetHeight+18;w=W*1.12;h=w/AR;if(top+h>H)top=Math.max(H-h-10,60);L=(W-w)/2;T=top}
+    else{w=Math.min(W*0.5,(H-230)*AR);h=w/AR;L=W-w-Math.max(150,W*0.12);T=Math.max(110,(H-h)/2+10);}
+    tree.style.width=w+'px';tree.style.height=h+'px';tree.style.left=L+'px';tree.style.top=T+'px';
+    // keep labels on screen
+    
+    zoom(false);
+  }
+  function zoom(animate){
+    if(!animate)tree.style.transition='none';
+    if(!cur){tree.style.transform='none'}
+    else{
+      var s=spots[cur],w=tree.offsetWidth,h=tree.offsetHeight,L=tree.offsetLeft,T=tree.offsetTop,W=stage.clientWidth,H=stage.clientHeight;
+      var px=parseFloat(s.style.left)/100*w,py=parseFloat(s.style.top)/100*h;
+      var k=phone()?2.2:1.8, tx=phone()?W*0.5:(W-Math.min(560,W*0.46))*0.5, ty=phone()?H*0.2:H*0.5;
+      var dx=tx-L-k*px,dy=ty-T-k*py;
+      tree.style.transform='translate('+dx+'px,'+dy+'px) scale('+k+')';
+    }
+    if(!animate){tree.offsetHeight;tree.style.transition=''}
+  }
+  function go(id,push){
+    cur=id||null;document.body.classList.toggle('zoomed',!!cur);
+    document.querySelectorAll('.sec').forEach(function(s){s.hidden=s.id!==cur});
+    panel.scrollTop=0;zoom(true);
+    if(push!==false){var u=cur?'#'+cur:location.pathname;history.replaceState(null,'',u)}
+    if(cur){var h=document.getElementById(cur).querySelector('h2');h.setAttribute('tabindex','-1');setTimeout(function(){h.focus({preventScroll:true})},50)}
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-go],[data-home],[data-step]');if(!t)return;
+    if(t.hasAttribute('data-home')){e.preventDefault();go(null);return}
+    if(t.dataset.go){go(t.dataset.go);return}
+    var i=order.indexOf(cur),n=(i+ +t.dataset.step+order.length)%order.length;go(order[i<0?0:n]);
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur)go(null)});
+  var lw=innerWidth,rt;addEventListener('resize',function(){if(Math.abs(innerWidth-lw)<2&&phone())return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(layout,150)});
+  layout();var h=location.hash.slice(1);if(order.indexOf(h)>-1){cur=h;document.body.classList.add('zoomed');document.getElementById(h).hidden=false;zoom(false)}
+  addEventListener('load',function(){setTimeout(function(){document.querySelectorAll('.art img').forEach(function(i){var x=new Image();x.src=i.src})},1200)});
+
+  (function(){var hl=document.querySelector('.tree .hl');
+    function on(k){var s=document.querySelector('.spot[data-go="'+k+'"]');var cx=s.style.left,cy=s.style.top,rx=parseFloat(s.style.width)/2*1.3,ry=parseFloat(s.style.height)/2*1.3;
+      var m='radial-gradient(ellipse '+rx+'% '+ry+'% at '+cx+' '+cy+',#000 55%,transparent 100%)';hl.style.webkitMaskImage=m;hl.style.maskImage=m;hl.style.transformOrigin=cx+' '+cy;hl.classList.add('sway');
+      document.querySelectorAll('.lab,.leads g').forEach(function(e){e.classList.toggle('on',(e.dataset.go||e.dataset.k)===k)});
+      document.body.classList.add('hovering')}
+    function off(){document.body.classList.remove('hovering');hl.classList.remove('sway');document.querySelectorAll('.lab.on,.leads g.on').forEach(function(e){e.classList.remove('on')})}
+    document.querySelectorAll('.spot,.lab').forEach(function(s){var k=s.dataset.go;s.addEventListener('mouseenter',function(){on(k)});s.addEventListener('focus',function(){on(k)});s.addEventListener('mouseleave',off);s.addEventListener('blur',off);s.addEventListener('click',off)});
+    function placeList(){var l=document.querySelector('.mlist'),t=document.getElementById('tree');if(innerWidth<=820)l.style.top=(t.offsetTop+t.offsetHeight+8)+'px'}
+    placeList();addEventListener('resize',function(){setTimeout(placeList,200)});
+  })();
+  var b=document.getElementById('copy'),a=document.getElementById('addr');
+  b.addEventListener('click',function(){
+    function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy address'},1800)}
+    function sel(){var r=document.createRange();r.selectNodeContents(a);var s=getSelection();s.removeAllRanges();s.addRange(r);try{if(document.execCommand('copy')){done();return}}catch(e){}b.textContent='Selected: press copy'}
+    try{navigator.clipboard.writeText(a.textContent).then(done,sel)}catch(e){sel()}
+  });
+})();
+</script>
+</body>
+</html>
