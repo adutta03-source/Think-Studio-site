@@ -452,6 +452,7 @@ body{counter-reset:fig}
 .workgrid .case summary{cursor:default;padding-top:0}
 .workgrid .case .c-tog{display:none}
 .workgrid .case summary{grid-template-columns:3rem minmax(0,1fr) auto}
+.pagehead+.sec{border-top:0;padding-top:8px}
 .contact.short{padding-block:clamp(48px,6vw,80px) 40px}
 @media (max-width:820px){
   .duo{grid-template-columns:minmax(0,1fr)}
