@@ -397,6 +397,8 @@ body{counter-reset:fig}
 .studio-note{margin-top:48px}
 @media (max-width:820px){.sectors{grid-template-columns:minmax(0,1fr)}}
 .person .pbio{font-size:1rem;line-height:1.7;max-width:34em;color:var(--muted);margin:0}
+.tag{white-space:nowrap}
+@media (max-width:420px){.tag{font-size:.68rem;letter-spacing:.08em}}
 
 /* ---------- test 9: multi-page ---------- */
 .nav ul a[aria-current="page"]{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mark);text-decoration-thickness:3px;text-underline-offset:8px}
@@ -414,7 +416,7 @@ body{counter-reset:fig}
 .card h3{font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,2.4vw,1.9rem);letter-spacing:-.02em;line-height:1.1;margin:0}
 .card p{color:var(--muted);margin:0}
 .card .go{margin-top:auto;padding-top:10px;font-weight:600;font-size:.95rem}
-.card .tag{align-self:flex-start}
+.card .tag{align-self:flex-start;min-width:min(100%,23em);box-sizing:border-box}
 /* home: compact work list */
 .wlist{list-style:none;margin:36px 0 0;padding:0;border-top:1px solid var(--ink)}
 .wlist li{border-bottom:1px solid var(--line)}
